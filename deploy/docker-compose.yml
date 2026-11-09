@@ -1,0 +1,17 @@
+services:
+  web:
+    image: nginx:alpine
+    restart: unless-stopped
+    volumes:
+      - ./site:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.kad-alieya.entrypoints=websecure
+      - traefik.http.routers.kad-alieya.rule=Host(`alieyadanfarhan.tech`) || Host(`www.alieyadanfarhan.tech`)
+      - traefik.http.routers.kad-alieya.tls.certresolver=letsencrypt
+      - traefik.http.routers.kad-alieya.middlewares=kad-www-redirect
+      - traefik.http.middlewares.kad-www-redirect.redirectregex.regex=^https://www\.alieyadanfarhan\.tech/(.*)
+      - traefik.http.middlewares.kad-www-redirect.redirectregex.replacement=https://alieyadanfarhan.tech/$${1}
+      - traefik.http.middlewares.kad-www-redirect.redirectregex.permanent=true
+      - traefik.http.services.kad-alieya.loadbalancer.server.port=80
