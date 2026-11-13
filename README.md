@@ -36,7 +36,11 @@ Kalau tukar `MAX_PAX`, tukar juga `MAX_PAX` dalam `rsvp-apps-script.gs`.
 Buka `index.html` terus dalam Chrome. RSVP akan hantar ke Google Sheet sebenar, jadi padam baris ujian selepas test.
 Untuk test tanpa sentuh Sheet, kosongkan sementara `RSVP_URL: ""` (mod percubaan, simpan dalam pelayar sahaja).
 
-## Deploy ke VPS
+## Hosting sekarang: GitHub Pages (percuma)
+Laman di-host oleh **GitHub Pages** dari branch `main` (fail `CNAME` = domain). Setiap `git push` ke `main` terus live dalam ~1 minit. Tak perlu SSH/VPS.
+DNS: `A @` → `185.199.108.153`, `.109.153`, `.110.153`, `.111.153`; `CNAME www` → `xanotic.github.io`.
+
+## (Lama) Deploy ke VPS
 VPS Hostinger (`179.197.242.108`, Ubuntu 24.04). Server sudah ada **Traefik** (urus port 80/443 + HTTPS Let's Encrypt automatik).
 **Jangan pasang nginx/Apache terus pada host**; ia akan berebut port dengan Traefik.
 
