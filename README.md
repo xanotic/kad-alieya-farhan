@@ -5,8 +5,8 @@ Laman web jemputan digital untuk Walimatulurus **Alieya Husna binti Asrul Ependi
 **Live:** https://alieyadanfarhan.tech
 
 ## Apa ada dalam kad
-- Kad 3D "Buka Kad" (muka depan Madinah, dalam = halaman kad sebenar)
-- Hero ilustrasi pengantin bawah gerbang bunga, zoom bila scroll
+- Terus ke laman utama (tiada kad "Buka Kad"); muzik bermula bila tetamu sentuh skrin, atau tekan butang muzik
+- Setiap scroll berhenti tepat pada satu halaman penuh (scroll snap); hero ilustrasi pengantin bawah gerbang bunga
 - Teks jemputan, kiraan detik, butiran majlis, peta, atur cara
 - **RSVP terus masuk Google Sheet** (tiada database), ucapan tetamu dipaparkan semula
 - BM / EN, mod gelap automatik, link peribadi `?to=Nama`

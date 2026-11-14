@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ms" class="lock">
+<html lang="ms">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -41,7 +41,7 @@ section{max-width:600px;margin:0 auto;padding:96px 22px}.det{max-width:880px}
 .top button[aria-pressed="true"]{background:var(--btn);color:var(--btnt)}
 .top .mu{display:grid;place-items:center;padding:6px 10px}
 .mu .bars{display:flex;gap:2px;align-items:flex-end;height:13px}.mu .bars i{width:2px;height:30%;background:currentColor;border-radius:2px;animation:eq 1s ease-in-out infinite}.mu .bars i:nth-child(2){animation-delay:-.4s}.mu .bars i:nth-child(3){animation-delay:-.7s}
-.mu.off .bars i{animation:none}@keyframes eq{50%{height:100%}}
+.mu.off .bars i{animation:none}.mu.wait{animation:muPing 2s infinite}@keyframes muPing{0%{box-shadow:0 0 0 0 rgba(176,138,62,.55)}100%{box-shadow:0 0 0 12px rgba(176,138,62,0)}}@keyframes eq{50%{height:100%}}
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
 .hero{max-width:none;height:300vh;padding:0;position:relative}
 .pin{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;place-items:center;text-align:center}
@@ -166,45 +166,6 @@ footer{text-align:center;padding:40px 24px 90px;color:var(--mute);position:relat
 .pt{transform-box:fill-box;transform-origin:center;animation:fall 10s linear infinite}@keyframes fall{from{translate:0 0;rotate:0deg;opacity:0}15%{opacity:.9}to{translate:-90px 520px;rotate:240deg;opacity:0}}
 .hb{transform-box:fill-box;transform-origin:center;animation:pulse 2.4s ease-in-out infinite}@keyframes pulse{50%{scale:1.2}}
 #fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:6}
-/* ---------- Buka Kad: the folded card that opens before the site ---------- */
-html.lock,html.lock body{overflow:hidden;height:100%}
-html.lock .names,html.lock .sub,html.lock .to{animation-play-state:paused}
-.gate{position:fixed;inset:0;z-index:50;display:grid;grid-template-rows:auto 1fr auto;justify-items:center;padding:max(26px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(22px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:radial-gradient(120% 80% at 50% 45%,#7a1832 0%,#4a0c1c 48%,#2c0711 100%);color:#f4e6d6;transition:opacity 1s ease,visibility 1s;overflow:hidden;touch-action:none}
-.gate::before{content:"";position:absolute;inset:0;opacity:.18;background:repeating-conic-gradient(from 0deg at 50% 50%,transparent 0 7.5deg,rgba(226,194,124,.25) 7.5deg 8deg);-webkit-mask:radial-gradient(circle at 50% 46%,#000 0,transparent 62%);mask:radial-gradient(circle at 50% 46%,#000 0,transparent 62%)}
-.g-head{position:relative;text-align:center;display:grid;gap:6px}
-.g-eb{margin:0;font:500 12px/1.4 "Hanken Grotesk",sans-serif;letter-spacing:.32em;text-transform:uppercase;color:#e2c27c}
-.g-to{margin:0;font:400 13px/1.4 "Hanken Grotesk",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#d9bfa9}
-.g-to b{display:block;font:400 26px/1.15 "Instrument Serif",serif;letter-spacing:0;text-transform:none;color:#fff3e4;margin-top:4px}
-.stage{position:relative;display:grid;place-items:center;width:100%;perspective:1700px;perspective-origin:50% 40%}
-.tilt{transform-style:preserve-3d;will-change:transform}
-.book{--bw:300px;--s:1;position:relative;width:min(70vw,330px,calc(58svh / 1.4));aspect-ratio:5/7;transform-style:preserve-3d;transition:transform 1.5s cubic-bezier(.6,.02,.2,1);cursor:pointer}
-.gate.open .book{transform:translateX(calc(var(--bw) * .5 * var(--s))) scale(var(--s));cursor:default}
-.leaf{position:absolute;inset:0;transform-style:preserve-3d}
-.gpage{position:absolute;inset:0;overflow:hidden;background:#f7f4f1 center/cover no-repeat;border-radius:2px 6px 6px 2px;box-shadow:inset 10px 0 18px -14px rgba(60,20,20,.45)}
-.leaf.inside{transform:translateZ(-1px)}
-.leaf.inside::after{content:"";position:absolute;inset:3px -5px -5px 3px;z-index:-1;border-radius:4px;background:#e8dccf;box-shadow:2px 2px 0 #ddd0c2,4px 4px 0 #d4c5b6}
-.leaf.gcover{transform-origin:0 50%;transition:transform 1.6s cubic-bezier(.55,.05,.25,1);transform:translateZ(1px)}
-.gate.open .leaf.gcover{transform:translateZ(1px) rotateY(-179deg)}
-.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:2px 6px 6px 2px;overflow:hidden}
-.face.front{background:#efe6dc url(assets/cover.jpg) center/cover}
-.face.front::before{content:"";position:absolute;inset:4.5%;border:1px solid rgba(176,138,62,.6);border-radius:2px;box-shadow:0 0 0 3px rgba(250,245,240,.35)}
-.sheen{position:absolute;inset:-40%;background:linear-gradient(115deg,transparent 35%,rgba(255,250,235,.55) 48%,transparent 60%);transform:translateX(var(--sx,0%));mix-blend-mode:soft-light;pointer-events:none}
-.face.back{transform:rotateY(180deg);border-radius:6px 2px 2px 6px}
-.face.back .gpage{border-radius:6px 2px 2px 6px;box-shadow:inset -12px 0 18px -14px rgba(60,20,20,.5)}
-.edge{position:absolute;top:0;bottom:0;right:0;width:5px;transform-origin:100% 50%;transform:rotateY(90deg);background:repeating-linear-gradient(90deg,#efe6dc 0 1px,#dcccbb 1px 2px)}
-.cast{position:absolute;left:50%;bottom:-7%;width:110%;height:12%;translate:-50% 0;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.55),transparent);filter:blur(8px);transition:width 1.5s}
-.gate.open .cast{width:220%}
-.tap{position:absolute;left:50%;bottom:-54px;translate:-50% 0;margin:0;font:400 13px "Hanken Grotesk",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#d9bfa9;white-space:nowrap;transition:opacity .5s}
-.tap::before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:#e2c27c;margin-right:10px;vertical-align:1px;animation:ping 1.8s infinite}
-@keyframes ping{0%{box-shadow:0 0 0 0 rgba(226,194,124,.7)}100%{box-shadow:0 0 0 14px rgba(226,194,124,0)}}
-.gate.open .tap{opacity:0}
-.g-foot{position:relative;display:grid;gap:12px;justify-items:center;min-height:86px}
-.g-btn{min-height:52px;padding:0 30px;border-radius:999px;border:1px solid rgba(226,194,124,.6);background:rgba(250,245,240,.06);color:#fff3e4;font:500 14px/1 "Hanken Grotesk",sans-serif;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background .3s,color .3s}
-.g-btn:hover,.gate.open .g-btn{background:#e2c27c;color:#4a0c1c}
-.g-hint{margin:0;font:400 12px "Hanken Grotesk",sans-serif;letter-spacing:.14em;color:#c9a99a;opacity:0;transition:opacity .6s .9s}
-.gate.ready .g-hint{opacity:1}
-.gate.leave{opacity:0;visibility:hidden;pointer-events:none}
-.gate.leave .stage{transform:scale(1.25);opacity:0;transition:transform 1.1s cubic-bezier(.2,.7,.2,1),opacity .9s}
 @media (max-width:640px){section{padding:80px 20px}.rin{padding:100px 20px}.gal{grid-template-columns:1fr 1fr}.fr:nth-child(3){grid-column:1/-1;aspect-ratio:16/10;border-radius:22px}.info{grid-template-columns:1fr}.info .card:nth-child(n+3){grid-column:auto}.tl{grid-template-columns:1fr}.tl::before{display:none}.row{grid-template-columns:1fr}.card{padding:26px 22px}.ctg{grid-template-columns:1fr}.map{aspect-ratio:4/3}}
 /* ---------- pages: every scroll lands on one full screen ---------- */
 html{scroll-snap-type:y mandatory}
@@ -214,7 +175,7 @@ html.typing{scroll-snap-type:none}
 .pg h2{font-size:clamp(34px,min(6.4vw,6svh),64px);margin-bottom:clamp(12px,2svh,22px)}
 .pg .orn{margin-bottom:clamp(12px,2.4svh,26px)}
 .dots{position:fixed;right:max(4px,env(safe-area-inset-right,0px));top:50%;translate:0 -50%;z-index:5;display:grid;opacity:0;transition:opacity .6s}
-html:not(.lock) .dots{opacity:1}
+.dots{opacity:1}
 .dots button{width:22px;height:20px;padding:0;border:0;background:none;cursor:pointer;display:grid;place-items:center}
 .dots button::before{content:"";width:6px;height:6px;border-radius:3px;background:var(--gold);opacity:.4;transition:height .35s,opacity .35s}
 .dots button[aria-current="true"]::before{height:18px;opacity:1}
@@ -278,29 +239,13 @@ html:not(.lock) .dots{opacity:1}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero{height:auto}.pin{display:block;height:auto;min-height:100svh;padding:90px 0}.cover,.reveal,.invA{grid-area:auto;opacity:1;margin:0 auto 40px}.rbg{clip-path:none}.snapA{display:none}.hero{scroll-snap-align:start}}
 </style>
-<noscript><style>.gate{display:none}html.lock,html.lock body{overflow:auto;height:auto}</style></noscript>
 </head>
 <body>
 <div class="orbs" aria-hidden="true"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div>
 <canvas id="fx" aria-hidden="true"></canvas>
-<div class="gate" id="gate" role="dialog" aria-label="Kad jemputan">
-  <div class="g-head"><p class="g-eb">Walimatulurus</p><p class="g-to" id="gTo" hidden><span data-i="toL"></span><b id="gToName"></b></p></div>
-  <div class="stage"><div class="tilt" id="tilt">
-    <div class="book" id="book" role="button" tabindex="0" aria-label="Buka kad jemputan">
-      <div class="cast"></div>
-      <div class="leaf inside"><div class="gpage" style="background-image:url(assets/kad-dalam-kanan.jpg)"></div></div>
-      <div class="leaf gcover">
-        <div class="face front"><div class="sheen" id="sheen"></div><div class="edge"></div></div>
-        <div class="face back"><div class="gpage" style="background-image:url(assets/kad-dalam-kiri.jpg)"></div></div>
-      </div>
-      <p class="tap" data-i="tap"></p>
-    </div>
-  </div></div>
-  <div class="g-foot"><button class="g-btn" id="gBtn" type="button"></button><p class="g-hint" data-i="gHint"></p></div>
-</div>
 <a class="pill brand" href="#hero">A &amp; F</a>
 <a class="fab" id="fab" href="#rsvp" data-i="fabT"></a>
-<div class="pill top" role="group" aria-label="Language"><button data-l="ms" aria-pressed="true">BM</button><button data-l="en" aria-pressed="false">EN</button><button class="mu off" id="mu" type="button" aria-label="Muzik" hidden><span class="bars"><i></i><i></i><i></i></span></button></div>
+<div class="pill top" role="group" aria-label="Language"><button data-l="ms" aria-pressed="true">BM</button><button data-l="en" aria-pressed="false">EN</button><button class="mu off wait" id="mu" type="button" aria-label="Muzik"><span class="bars"><i></i><i></i><i></i></span></button></div>
 <audio id="bgm" src="assets/lagu.mp3" loop preload="metadata" playsinline></audio>
 <nav class="dots" id="dots" aria-label="Halaman"></nav>
 <main>
@@ -482,7 +427,7 @@ renderWishes();if(M)measure()}
 function setLang(l){lang=l;store.set("lang",l);document.documentElement.lang=l;
 document.querySelectorAll("[data-i]").forEach(e=>{const v=T[l][e.dataset.i];if(v)e.textContent=v});
 $("iP2").innerHTML=esc(T[l].iP2).replace("{to}","<b"+(TO?"":" class=\"one\"")+">"+esc(TO||T[l].hon)+"</b>");
-document.querySelectorAll(".top button[data-l]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===l));renderWishes();if(typeof gLabel==="function")gLabel();if(M){split();measure()}}
+document.querySelectorAll(".top button[data-l]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===l));renderWishes();if(M){split();measure()}}
 document.querySelectorAll(".top button[data-l]").forEach(b=>b.onclick=()=>setLang(b.dataset.l));
 if(TO){$("toBox").hidden=false;$("toName").textContent=TO}
 
@@ -508,7 +453,7 @@ $("copyAddr").onclick=async()=>{const b=$("copyAddr");try{await navigator.clipbo
    so keep retrying on every tap until it plays. The button is always shown so guests can start/stop it. */
 const bgm=$("bgm"),mu=$("mu");let musicOk=true,userOff=false,wasPlaying=false;bgm.volume=.8;
 const TAPS=["click","touchend","keydown"];
-function playMusic(){return bgm.play().then(()=>{mu.hidden=false;mu.classList.remove("off");TAPS.forEach(t=>removeEventListener(t,startMusic,true))})}
+function playMusic(){return bgm.play().then(()=>{mu.hidden=false;mu.classList.remove("off","wait");TAPS.forEach(t=>removeEventListener(t,startMusic,true))})}
 function startMusic(e){if(!musicOk||userOff||!bgm.paused)return;if(e&&e.target&&e.target.closest&&e.target.closest("#mu"))return;
 playMusic().catch(()=>{if(musicOk)mu.hidden=false})}
 TAPS.forEach(t=>addEventListener(t,startMusic,{capture:true,passive:true}));
@@ -588,34 +533,11 @@ addEventListener("scroll",dotsUpd,{passive:true});dotsUpd();
 /* no snapping while typing (keyboard open), so the form never jumps */
 let typT=0;addEventListener("focusin",e=>{if(e.target.matches("input,textarea,select")){clearTimeout(typT);document.documentElement.classList.add("typing")}});
 addEventListener("focusout",()=>{typT=setTimeout(()=>document.documentElement.classList.remove("typing"),400)});
-/* ---------- Buka Kad (opening card) ---------- */
-const gate=$("gate"),book=$("book"),gBtn=$("gBtn"),tilt=$("tilt"),sheen=$("sheen");
-let opened=false,entered=false,gx=0,gy=0,gcx=0,gcy=0;
-function gLabel(){gBtn.textContent=opened?T[lang].gGo:T[lang].gOpen}
-if(TO){$("gTo").hidden=false;$("gToName").textContent=TO}
-function fitBook(){const w=book.offsetWidth;book.style.setProperty("--bw",w+"px");book.style.setProperty("--s",Math.min(1,innerWidth*.94/(2*w),innerHeight*.62/(w*1.4)).toFixed(3))}
-fitBook();addEventListener("resize",fitBook);
-function askMotion(){const D=window.DeviceOrientationEvent;if(D&&typeof D.requestPermission==="function")D.requestPermission().catch(()=>{})}
-function openCard(){if(opened)return;opened=true;fitBook();gate.classList.add("open");gLabel();book.setAttribute("aria-label",T[lang].gGo);askMotion();startMusic();setTimeout(()=>gate.classList.add("ready"),M?1200:0)}
-function enterSite(){if(entered)return;if(!opened){openCard();return}entered=true;
-gate.classList.add("leave");document.documentElement.classList.remove("lock");scrollTo(0,0);if(M)measure();
-setTimeout(()=>{gate.hidden=true},M?1100:0);try{sessionStorage.setItem("kad-open","1")}catch(e){}}
-const gAct=()=>opened?enterSite():openCard();
-book.onclick=gAct;gBtn.onclick=gAct;
-book.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();gAct()}};
-gate.addEventListener("wheel",e=>{if(e.deltaY>20)gAct()},{passive:true});
-let gy0=null;gate.addEventListener("touchstart",e=>{gy0=e.touches[0].clientY},{passive:true});
-gate.addEventListener("touchend",e=>{if(gy0==null)return;const dy=gy0-e.changedTouches[0].clientY;gy0=null;if(dy>50)gAct()},{passive:true});
-addEventListener("pointermove",e=>{if(e.pointerType!=="mouse")return;gx=e.clientX/innerWidth*2-1;gy=e.clientY/innerHeight*2-1},{passive:true});
-addEventListener("deviceorientation",e=>{if(e.gamma==null||entered)return;gx=Math.max(-1,Math.min(1,e.gamma/22));gy=Math.max(-1,Math.min(1,(e.beta-50)/22))});
-(function gLoop(){if(entered)return;gcx+=(gx-gcx)*.07;gcy+=(gy-gcy)*.07;
-if(M){tilt.style.transform=`rotateX(${(-gcy*9).toFixed(2)}deg) rotateY(${(gcx*(opened?7:14)).toFixed(2)}deg)`;sheen.style.setProperty("--sx",(gcx*30)+"%")}
-requestAnimationFrame(gLoop)})();
+/* iPhone: the orb tilt needs motion permission, which can only be asked inside a tap */
+addEventListener("click",()=>{const D=window.DeviceOrientationEvent;if(D&&typeof D.requestPermission==="function")D.requestPermission().catch(()=>{})},{once:true});
 
 setLang(store.get("lang","ms"));
 loadWishes();
-/* came back in the same session (e.g. after opening Waze) → skip the card */
-try{if(sessionStorage.getItem("kad-open")==="1"){opened=true;gate.classList.add("open");enterSite()}}catch(e){}
 </script>
 </body>
 </html>
