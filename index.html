@@ -15,7 +15,7 @@
 <link rel="icon" href="assets/monogram.png">
 <meta name="theme-color" content="#7a1530">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Amiri:wght@400;700&family=El+Messiri:wght@500;600&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Amiri:wght@400;700&family=Alexandria:wght@200;300&family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f8f0ea;--ink:#5a0f22;--mute:#7d4f5a;--gold:#b08a3e;--line:rgba(90,15,34,.16);--glass:rgba(255,250,246,.58);--o1:#b5566b;--o2:#ecc9c6;--o3:#ead39b;--deep:#7a1530;--btn:#7a1530;--btnt:#fdf6f0;--shadow:rgba(90,15,34,.38);--err:#a3324a;--note:#f4ead0;--notet:#6b5520;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -53,8 +53,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .invA p{margin:0}
 .invA .ar{font-family:"Amiri",serif}
 .invA .i2 b.one{display:block;white-space:nowrap;font-size:min(1em,calc((100vw - 52px)/25.5))}
-.invA .bism{font:600 2.15em/1.4 "El Messiri","Amiri",serif;color:var(--ink);margin-bottom:.15em}
-.invA .salam{font:500 1.35em/1.5 "El Messiri","Amiri",serif;margin-bottom:1.1em;color:var(--gold)}
+.invA .bism{font:300 2.2em/1.5 "Alexandria","Amiri",sans-serif;color:var(--ink);margin-bottom:.1em}
+.invA .salam{font:300 1.3em/1.6 "Alexandria","Amiri",sans-serif;margin-bottom:1.1em;color:var(--gold)}
 .invA .i2{color:var(--mute);margin:0 auto 1.2em;max-width:26em;line-height:1.65}
 .invA .i2 b{color:var(--ink);font-weight:500}
 .invA .par{margin-bottom:1.3em}
@@ -301,7 +301,7 @@ html:not(.lock) .dots{opacity:1}
 <a class="pill brand" href="#hero">A &amp; F</a>
 <a class="fab" id="fab" href="#rsvp" data-i="fabT"></a>
 <div class="pill top" role="group" aria-label="Language"><button data-l="ms" aria-pressed="true">BM</button><button data-l="en" aria-pressed="false">EN</button><button class="mu off" id="mu" type="button" aria-label="Muzik" hidden><span class="bars"><i></i><i></i><i></i></span></button></div>
-<audio id="bgm" src="assets/lagu.mp3" loop preload="none"></audio>
+<audio id="bgm" src="assets/lagu.mp3" loop preload="metadata" playsinline></audio>
 <nav class="dots" id="dots" aria-label="Halaman"></nav>
 <main>
 <section class="hero" id="hero"><i class="snapA"></i><i class="snapA"></i><i class="snapA"></i><div class="pin">
@@ -504,10 +504,17 @@ $("mapShield").onclick=e=>e.currentTarget.hidden=true;
 $("copyAddr").onclick=async()=>{const b=$("copyAddr");try{await navigator.clipboard.writeText(CONFIG.VENUE)}catch(e){}b.textContent=T[lang].copied;setTimeout(()=>b.textContent=T[lang].copyA,1600)};
 
 /* music (button appears only if assets/lagu.mp3 exists) */
-const bgm=$("bgm"),mu=$("mu");let tried=false;
-function startMusic(){if(tried)return;tried=true;bgm.play().then(()=>{mu.hidden=false;mu.classList.remove("off")}).catch(()=>{})}
-addEventListener("pointerdown",startMusic,{once:true});
-mu.onclick=()=>{if(bgm.paused){bgm.play().catch(()=>{});mu.classList.remove("off")}else{bgm.pause();mu.classList.add("off")}};
+/* Phones only allow sound to start inside a real tap (click / touchend / key), not on the first touch-down,
+   so keep retrying on every tap until it plays. The button is always shown so guests can start/stop it. */
+const bgm=$("bgm"),mu=$("mu");let musicOk=true,userOff=false,wasPlaying=false;bgm.volume=.8;
+const TAPS=["click","touchend","keydown"];
+function playMusic(){return bgm.play().then(()=>{mu.hidden=false;mu.classList.remove("off");TAPS.forEach(t=>removeEventListener(t,startMusic,true))})}
+function startMusic(e){if(!musicOk||userOff||!bgm.paused)return;if(e&&e.target&&e.target.closest&&e.target.closest("#mu"))return;
+playMusic().catch(()=>{if(musicOk)mu.hidden=false})}
+TAPS.forEach(t=>addEventListener(t,startMusic,{capture:true,passive:true}));
+bgm.addEventListener("error",()=>{musicOk=false;mu.hidden=true});
+mu.onclick=()=>{if(bgm.paused){userOff=false;playMusic().catch(()=>{})}else{userOff=true;bgm.pause();mu.classList.add("off")}};
+document.addEventListener("visibilitychange",()=>{if(document.hidden){wasPlaying=!bgm.paused;bgm.pause()}else if(wasPlaying&&!userOff)bgm.play().catch(()=>{})});
 
 /* ---------- RSVP → Google Sheet ---------- */
 const form=$("f"),send=$("send");
