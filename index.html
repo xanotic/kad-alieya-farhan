@@ -245,6 +245,25 @@ html.typing{scroll-snap-type:none}
 .rin.pg>.card{margin:0}.rin:has(#prevNote:not([hidden])) form{gap:16px}#prevNote{font-size:12.5px}
 .wall{max-width:760px}
 }
+/* ---------- accessories: florals from the Canva card, gold sparkles, stationery frames ---------- */
+.pg{position:relative}
+.flo{position:absolute;top:0;z-index:-1;width:min(54vw,420px);aspect-ratio:760/181;background:center/contain no-repeat;pointer-events:none;filter:drop-shadow(0 8px 12px rgba(90,15,34,.12))}
+.flo.l{left:calc(50% - 50vw);background-image:url(assets/floral-tl.png)}
+.flo.r{right:calc(50% - 50vw);background-image:url(assets/floral-tr.png)}
+.flo.bq{top:auto;bottom:0;left:50%;translate:-50% 0;width:min(84vw,440px);aspect-ratio:900/258;background-image:url(assets/bouquet.png);opacity:.92}
+.flo.dn{top:auto;bottom:0;transform:scaleY(-1);opacity:.85}
+.in .flo{animation:floIn 1.4s cubic-bezier(.2,.7,.2,1) both}@keyframes floIn{from{opacity:0;translate:0 -14px}}
+.in .flo.bq{animation-name:bqIn}@keyframes bqIn{from{opacity:0;translate:-50% 18px}}
+.spk{position:absolute;width:var(--z,9px);height:var(--z,9px);background:var(--sc,#e2c27c);clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);pointer-events:none;opacity:0;animation:tw var(--t,3.4s) ease-in-out var(--dl2,0s) infinite}
+@keyframes tw{0%,100%{opacity:0;transform:scale(.3) rotate(0)}50%{opacity:var(--o,.9);transform:scale(1) rotate(45deg)}}
+.spks{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.rbg .spks{z-index:0}
+.card{position:relative}
+.card::after{content:"";position:absolute;inset:6px;border:1px solid rgba(176,138,62,.3);border-radius:21px;pointer-events:none}
+.rin>.card::after{border-color:rgba(226,194,124,.28)}
+.count div{position:relative}.count div::before{content:"";position:absolute;left:28%;right:28%;top:0;height:2px;border-radius:2px;background:var(--gold);opacity:.7}
+@media (max-width:640px){.flo{width:68vw}}
+@media (max-height:740px) and (max-width:640px){.flo{width:56vw}.flo.bq{width:64vw}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero{height:auto}.pin{display:block;height:auto;min-height:100svh;padding:90px 0}.cover,.reveal,.invA{grid-area:auto;opacity:1;margin:0 auto 40px}.rbg{clip-path:none}.snapA{display:none}.hero{scroll-snap-align:start}}
 </style>
 </head>
@@ -294,7 +313,7 @@ html.typing{scroll-snap-type:none}
 <div class="count"><div><b id="d">0</b><span data-i="days"></span></div><div><b id="h">0</b><span data-i="hours"></span></div><div><b id="m">0</b><span data-i="mins"></span></div><div><b id="s">0</b><span data-i="secs"></span></div></div></div>
 </div></section>
 
-<section class="intro pg" id="intro"><div class="mono">A&amp;F</div><p class="kick" data-i="bis"></p><h2 class="sp brk" data-i="introT"></h2>
+<section class="intro pg" id="intro"><i class="flo l" aria-hidden="true"></i><i class="flo r" aria-hidden="true"></i><div class="mono">A&amp;F</div><p class="kick" data-i="bis"></p><h2 class="sp brk" data-i="introT"></h2>
 <div class="gal">
 <div class="fr"><div class="in"><img src="assets/walimah.png" alt="Walimatul urus" width="520" height="207"><img class="ph" src="assets/gambar-1.jpg" alt="" hidden></div></div>
 <div class="fr"><div class="in"><img src="assets/monogram.png" alt="Monogram فع" width="440" height="400"><img class="ph" src="assets/gambar-2.jpg" alt="" hidden></div></div>
@@ -302,13 +321,13 @@ html.typing{scroll-snap-type:none}
 </div>
 <div class="band" aria-hidden="true"><div class="marq">Alieya &amp; Farhan · 02.01.2027 · Alieya &amp; Farhan · 02.01.2027 · Alieya &amp; Farhan</div></div></section>
 
-<section class="det pg" id="details"><div class="orn" aria-hidden="true"><svg width="150" height="22" viewBox="0 0 150 22" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 11H58M92 11H150" opacity=".6"/><g transform="translate(75 11)"><circle r="2.2" fill="currentColor" stroke="none"/><ellipse cx="0" cy="-6" rx="2.6" ry="4.4"/><ellipse cx="0" cy="6" rx="2.6" ry="4.4"/><ellipse cx="-6" cy="0" rx="4.4" ry="2.6"/><ellipse cx="6" cy="0" rx="4.4" ry="2.6"/></g></svg></div><p class="kick" data-i="save"></p><h2 class="sp" data-i="detT"></h2>
+<section class="det pg" id="details"><i class="flo r" aria-hidden="true"></i><i class="flo l dn" aria-hidden="true"></i><div class="orn" aria-hidden="true"><svg width="150" height="22" viewBox="0 0 150 22" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 11H58M92 11H150" opacity=".6"/><g transform="translate(75 11)"><circle r="2.2" fill="currentColor" stroke="none"/><ellipse cx="0" cy="-6" rx="2.6" ry="4.4"/><ellipse cx="0" cy="6" rx="2.6" ry="4.4"/><ellipse cx="-6" cy="0" rx="4.4" ry="2.6"/><ellipse cx="6" cy="0" rx="4.4" ry="2.6"/></g></svg></div><p class="kick" data-i="save"></p><h2 class="sp" data-i="detT"></h2>
 <div class="info">
 <div class="card"><div class="ico"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></div><h3 data-i="dtH"></h3><p data-i="dtP"></p><div class="links"><a class="btn ghost" id="gcal" target="_blank" rel="noopener" data-i="cal"></a><button class="btn ghost" id="ics" type="button" data-i="ics"></button></div></div>
 <div class="card"><div class="ico"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div><h3 data-i="pgH"></h3><div class="tl"><div><b data-i="t1"></b><span data-i="e1"></span></div><div><b data-i="t2"></b><span data-i="e2"></span></div><div><b data-i="t3"></b><span data-i="e3"></span></div></div></div>
 </div></section>
 
-<section class="det venue pg" id="venue"><div class="orn" aria-hidden="true"><svg width="150" height="22" viewBox="0 0 150 22" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 11H58M92 11H150" opacity=".6"/><g transform="translate(75 11)"><circle r="2.2" fill="currentColor" stroke="none"/><ellipse cx="0" cy="-6" rx="2.6" ry="4.4"/><ellipse cx="0" cy="6" rx="2.6" ry="4.4"/><ellipse cx="-6" cy="0" rx="4.4" ry="2.6"/><ellipse cx="6" cy="0" rx="4.4" ry="2.6"/></g></svg></div><p class="kick" data-i="vnH"></p><h2 class="sp">Dewan Tengku Zara</h2>
+<section class="det venue pg" id="venue"><i class="flo l" aria-hidden="true"></i><div class="orn" aria-hidden="true"><svg width="150" height="22" viewBox="0 0 150 22" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 11H58M92 11H150" opacity=".6"/><g transform="translate(75 11)"><circle r="2.2" fill="currentColor" stroke="none"/><ellipse cx="0" cy="-6" rx="2.6" ry="4.4"/><ellipse cx="0" cy="6" rx="2.6" ry="4.4"/><ellipse cx="-6" cy="0" rx="4.4" ry="2.6"/><ellipse cx="6" cy="0" rx="4.4" ry="2.6"/></g></svg></div><p class="kick" data-i="vnH"></p><h2 class="sp">Dewan Tengku Zara</h2>
 <div class="card vcard"><div class="vtxt"><div class="ico"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-10.5a6.5 6.5 0 0 1 13 0C18.5 15.4 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.3"/></svg></div><p data-i="vnP"></p><div class="links"><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Dewan%20Tengku%20Zara%2C%20Jalan%2015%2F23%2C%20Seksyen%2015%2C%20Shah%20Alam" target="_blank" rel="noopener">Google Maps</a><a class="btn ghost" href="https://waze.com/ul?q=Dewan%20Tengku%20Zara%20Seksyen%2015%20Shah%20Alam&amp;navigate=yes" target="_blank" rel="noopener">Waze</a><button class="btn ghost" id="copyAddr" type="button" data-i="copyA"></button></div></div>
 <div class="map"><iframe title="Peta Dewan Tengku Zara" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Dewan%20Tengku%20Zara%2C%20Jalan%2015%2F23%2C%20Seksyen%2015%2C%2040200%20Shah%20Alam&amp;z=16&amp;output=embed"></iframe><button type="button" id="mapShield"><span data-i="mapTap"></span></button></div></div>
 </section>
@@ -330,7 +349,7 @@ html.typing{scroll-snap-type:none}
 <div class="wall pg" id="ucapan"><p class="kick" data-i="wK"></p><h2 class="sp" data-i="wT"></h2><div class="wishes" id="wishes"></div></div>
 </section>
 
-<section class="contact pg" id="contact"><div class="orn" aria-hidden="true"><svg width="150" height="22" viewBox="0 0 150 22" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 11H58M92 11H150" opacity=".6"/><g transform="translate(75 11)"><circle r="2.2" fill="currentColor" stroke="none"/><ellipse cx="0" cy="-6" rx="2.6" ry="4.4"/><ellipse cx="0" cy="6" rx="2.6" ry="4.4"/><ellipse cx="-6" cy="0" rx="4.4" ry="2.6"/><ellipse cx="6" cy="0" rx="4.4" ry="2.6"/></g></svg></div><p class="kick" data-i="ctK"></p><h2 class="sp" data-i="ctT"></h2>
+<section class="contact pg" id="contact"><i class="flo l" aria-hidden="true"></i><i class="flo r" aria-hidden="true"></i><i class="flo bq" aria-hidden="true"></i><div class="orn" aria-hidden="true"><svg width="150" height="22" viewBox="0 0 150 22" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 11H58M92 11H150" opacity=".6"/><g transform="translate(75 11)"><circle r="2.2" fill="currentColor" stroke="none"/><ellipse cx="0" cy="-6" rx="2.6" ry="4.4"/><ellipse cx="0" cy="6" rx="2.6" ry="4.4"/><ellipse cx="-6" cy="0" rx="4.4" ry="2.6"/><ellipse cx="6" cy="0" rx="4.4" ry="2.6"/></g></svg></div><p class="kick" data-i="ctK"></p><h2 class="sp" data-i="ctT"></h2>
 <div class="ctg" id="ctg"></div>
 <footer><div class="orn" aria-hidden="true"><svg width="150" height="22" viewBox="0 0 150 22" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 11H58M92 11H150" opacity=".6"/><g transform="translate(75 11)"><circle r="2.2" fill="currentColor" stroke="none"/><ellipse cx="0" cy="-6" rx="2.6" ry="4.4"/><ellipse cx="0" cy="6" rx="2.6" ry="4.4"/><ellipse cx="-6" cy="0" rx="4.4" ry="2.6"/><ellipse cx="6" cy="0" rx="4.4" ry="2.6"/></g></svg></div><div class="fdoa">Barakallahu lakuma wa baraka alaikuma.</div><p class="fn">Alieya &amp; Farhan</p><p class="ftag">THE SAME PROMISE · A NEW CHAPTER</p><p data-i="thx"></p></footer></section>
 </main>
@@ -533,6 +552,13 @@ for(let i=0;i<9;i++){flower(g,500+j(130),262+j(40),14+R()*10)}
 for(const c of [[110,975],[290,985],[710,985],[890,975]]){for(let i=0;i<8;i++)leaf(g2,c[0]+j(110),c[1]+j(30),R()*180,10+R()*6);for(let i=0;i<10;i++)flower(g2,c[0]+j(120),c[1]+j(34),6+R()*6)}
 for(let i=0;i<12;i++){const e=el(pt,"ellipse",{cx:80+R()*840,cy:380+R()*160,rx:7,ry:3.5,fill:P[i%5],class:"pt"});e.style.animationDuration=(8+R()*6)+"s";e.style.animationDelay="-"+(R()*12)+"s"}
 })();
+/* gold sparkles: many on the maroon pages, a few on the light ones */
+(function(){let sd=11;const R=()=>(sd=sd*16807%2147483647)/2147483647;
+function add(host,n,col,op){const w=document.createElement("div");w.className="spks";w.setAttribute("aria-hidden","true");
+for(let i=0;i<n;i++){const e=document.createElement("i");e.className="spk";const st=e.style;st.left=(4+R()*92)+"%";st.top=(4+R()*92)+"%";
+st.setProperty("--z",(5+R()*9).toFixed(1)+"px");st.setProperty("--t",(2.6+R()*3).toFixed(2)+"s");st.setProperty("--dl2",(-R()*5).toFixed(2)+"s");st.setProperty("--o",op);if(col)st.setProperty("--sc",col);w.appendChild(e)}
+host.prepend(w)}
+add($("rbg"),26,"#e2c27c",".95");["intro","details","venue","contact"].forEach(id=>add($(id),7,"#c9a14f",".6"))})();
 /* page dots: one per resting point */
 const PTS=[...document.querySelectorAll(".snapA,.pg")],dotsEl=$("dots");
 dotsEl.innerHTML=PTS.map((_,i)=>`<button type="button" aria-label="${i+1}/${PTS.length}"></button>`).join("");
