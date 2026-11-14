@@ -222,6 +222,7 @@ html:not(.lock) .dots{opacity:1}
 /* intro */
 .intro .mono{--mz:clamp(62px,8.5svh,84px);width:var(--mz);height:var(--mz);font-size:calc(var(--mz)*.31);line-height:1;letter-spacing:-.01em;white-space:nowrap;padding:0 .14em .06em 0;margin-bottom:clamp(12px,2.4svh,26px)}
 .intro .kick{margin-bottom:clamp(8px,1.4svh,16px)}
+.intro.pg h2{font-size:clamp(25px,min(7.2vw,4.6svh),48px);line-height:1.12}
 .gal{margin-top:clamp(20px,3svh,44px);width:100%;max-width:min(640px,54svh);margin-inline:auto}
 .intro .band{margin:clamp(14px,3svh,40px) calc(50% - 50vw) 0;padding:6px 0}.intro .marq{font-size:clamp(44px,min(12vw,9svh),110px)}
 .fr .in .dt{font-size:clamp(14px,2.6svh,26px)}.fr .in .dt small{font-size:clamp(18px,3.2svh,32px)}
@@ -262,14 +263,14 @@ html:not(.lock) .dots{opacity:1}
 }
 @media (max-height:740px) and (max-width:640px){
 .pg{padding-top:66px;padding-bottom:74px}.pg>.orn{display:none}.pg h2{font-size:30px}
-.intro .quote{font-size:18px}.gal{max-width:300px}.fr:nth-child(2){margin-top:16px}
+.intro .quote{font-size:17px}.intro.pg h2{font-size:25px}.gal{max-width:300px}.fr:nth-child(2){margin-top:16px}
 .det .ico{display:none}.det .info h3{font-size:22px}.det .card{padding:14px 16px 16px}.det .info p{font-size:14px;line-height:1.5}
 .vtxt .ico{display:none}.vcard{gap:12px;padding:14px}.vcard .map{aspect-ratio:16/10}.vtxt p{font-size:14px;line-height:1.5}
 .rhead .lead{display:none}.rhead h2{font-size:30px}.rin .card{padding:16px 16px}form{gap:12px}label{gap:2px}textarea{min-height:44px}.seg span{padding:10px 6px}
 .contact footer{padding-top:14px}.fdoa{font-size:19px}.fn{font-size:34px;margin:6px 0 2px}.ct{padding:10px 12px}
 }
 @media (min-width:900px){
-.intro.pg{padding-top:62px;padding-bottom:60px}.contact .ctg{grid-template-columns:repeat(auto-fit,minmax(220px,270px));justify-content:center}
+.intro.pg{padding-top:60px;padding-bottom:56px}.intro .gal{max-width:min(640px,50svh)}.contact .ctg{grid-template-columns:repeat(auto-fit,minmax(220px,270px));justify-content:center}
 .det{max-width:940px}.venue{max-width:1000px}
 .vcard{grid-template-columns:1fr 1.35fr;align-items:center;text-align:left;padding:28px}.vtxt .ico{justify-items:start}.vtxt .links{justify-content:flex-start}.vcard .map{aspect-ratio:4/3}
 .rin.pg{max-width:1060px;display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:center;align-content:center}
@@ -342,7 +343,7 @@ html:not(.lock) .dots{opacity:1}
 <div class="count"><div><b id="d">0</b><span data-i="days"></span></div><div><b id="h">0</b><span data-i="hours"></span></div><div><b id="m">0</b><span data-i="mins"></span></div><div><b id="s">0</b><span data-i="secs"></span></div></div></div>
 </div></section>
 
-<section class="intro pg" id="intro"><div class="mono">A&amp;F</div><p class="kick" data-i="bis"></p><h2 class="sp" data-i="introT"></h2><p class="quote"><span data-i="qt"></span><small>Surah An-Naba’ (78:8)</small></p>
+<section class="intro pg" id="intro"><div class="mono">A&amp;F</div><p class="kick" data-i="bis"></p><h2 class="sp brk" data-i="introT"></h2><p class="quote"><span data-i="qt"></span><small>Surah An-Naba’ (78:8)</small></p>
 <div class="gal">
 <div class="fr"><div class="in"><img src="assets/walimah.png" alt="Walimatul urus" width="520" height="207"><img class="ph" src="assets/gambar-1.jpg" alt="" hidden></div></div>
 <div class="fr"><div class="in"><img src="assets/monogram.png" alt="Monogram فع" width="440" height="400"><img class="ph" src="assets/gambar-2.jpg" alt="" hidden></div></div>
@@ -399,7 +400,7 @@ CONTACTS:[{name:"Imran",phone:"+60 19-901 1592"},{name:"Nabila",phone:"+60 16-32
 };
 const T={
 ms:{fabT:"Sahkan kehadiran",cal:"Google Calendar",ics:"iPhone / Outlook",thx:"Terima kasih atas kehadiran dan doa restu anda.",toL:"Kepada",iT:"Walimatulurus",iP2:"dengan penuh kesyukuran menjemput {to} ke majlis perkahwinan anakanda yang kami kasihi",hon:"YBhg. Dato’ Sri/Datuk/Dato’/Tuan/Puan/Cik sekeluarga",iP3:"dengan pilihan hatinya",invite:"Dengan penuh kesyukuran, kami menjemput anda ke majlis perkahwinan anakanda kami.",dateLong:"Sabtu, 2 Januari 2027",venue:"Dewan Tengku Zara, Shah Alam, Selangor",days:"hari",hours:"jam",mins:"minit",secs:"saat",
-bis:"Bismillahirrahmanirrahim",introT:"Dua hati, satu perjalanan.",qt:"“Dan Kami telah menciptakan kamu berpasang-pasangan.”",
+bis:"Bismillahirrahmanirrahim",introT:"Dengan izin-Nya kami bertemu, dengan nama-Nya kami bersatu.",qt:"“Dan Kami telah menciptakan kamu berpasang-pasangan.”",
 save:"Simpan tarikhnya",detT:"Butiran majlis",dtH:"Tarikh & masa",dtP:"Sabtu, 2 Januari 2027\n24 Rejab 1448H\n11.00 pagi hingga 4.00 petang",vnH:"Lokasi",vnP:"Dewan Tengku Zara\n15, Jalan 15/23, Seksyen 15\n40200 Shah Alam, Selangor",pgH:"Atur cara",t1:"11.00 pagi",e1:"Majlis bermula",t2:"12.30 tengah hari",e2:"Ketibaan pengantin",t3:"4.00 petang",e3:"Majlis berakhir",mapH:"Peta",mapP:"Ketik peta untuk menggerakkannya.",mapTap:"Click untuk menggerakkan peta",copyA:"Salin alamat",copied:"Disalin",
 rsvpK:"Mohon pengesahan kehadiran",rsvpT:"Dapat hadir bersama kami?",rsvpP:"Mohon sahkan kehadiran anda supaya keluarga dapat membuat persiapan jamuan secukupnya.",name:"Nama penuh",yes:"Insya-Allah, hadir",no:"Tidak dapat hadir",pax:"Bilangan tetamu",phone:"No. telefon",wish:"Ucapan untuk pengantin (pilihan)",send:"Hantar RSVP",sending:"Menghantar…",thanks:"Terima kasih!",okYes:"{n}, kehadiran {p} orang telah direkodkan. Jumpa nanti, insya-Allah.",okNo:"{n}, jawapan anda telah direkodkan. Terima kasih atas doa anda.",edit:"Ubah jawapan",wyes:"hadir",wno:"tidak dapat hadir",
 eName:"Sila tulis nama anda.",ePhone:"Sila masukkan nombor telefon yang sah, contoh 012-345 6789.",eSend:"RSVP tidak dapat dihantar. Semak sambungan internet dan cuba lagi, atau hubungi keluarga melalui WhatsApp di bawah.",
@@ -407,7 +408,7 @@ demo:"Mod percubaan: borang belum disambungkan ke Google Sheet, jadi jawapan han
 wEmpty:"Belum ada ucapan. Jadilah yang pertama menulis ucapan untuk pengantin.",wMore:"Lihat semua ucapan ({n})",wFail:"Ucapan tidak dapat dimuatkan sekarang.",
 wK:"Doa & ucapan",wT:"Ucapan tetamu",ctK:"Sebarang pertanyaan",ctT:"Hubungi kami",call:"Call",tap:"Buka Kad",gOpen:"Buka Kad",gGo:"Lihat Jemputan",gHint:"atau scroll ke bawah"},
 en:{fabT:"RSVP",cal:"Google Calendar",ics:"iPhone / Outlook",thx:"Thank you for your presence and prayers.",toL:"Dear",iT:"Walimatulurus",iP2:"with heartfelt gratitude invite {to} to the wedding of our beloved daughter",hon:"you and your family",iP3:"together with her chosen one",invite:"With grateful hearts, we invite you to our daughter’s wedding celebration.",dateLong:"Saturday, 2 January 2027",venue:"Dewan Tengku Zara, Shah Alam, Selangor",days:"days",hours:"hours",mins:"mins",secs:"secs",
-bis:"In the name of Allah",introT:"Two hearts, one beautiful journey.",qt:"“And We created you in pairs.”",
+bis:"In the name of Allah",introT:"By His will we met, in His name we unite.",qt:"“And We created you in pairs.”",
 save:"Save the date",detT:"The celebration",dtH:"Date & time",dtP:"Saturday, 2 January 2027\n24 Rejab 1448H\n11.00 am to 4.00 pm",vnH:"Venue",vnP:"Dewan Tengku Zara\n15, Jalan 15/23, Seksyen 15\n40200 Shah Alam, Selangor",pgH:"The day",t1:"11.00 am",e1:"Celebration begins",t2:"12.30 pm",e2:"Couple’s arrival",t3:"4.00 pm",e3:"Event concludes",mapH:"Map",mapP:"Tap the map to move it.",mapTap:"Click to move the map",copyA:"Copy address",copied:"Copied",
 rsvpK:"Kindly respond",rsvpT:"Will you join us?",rsvpP:"Please let us know so the family can prepare enough food for everyone.",name:"Full name",yes:"Yes, I’ll be there",no:"Can’t make it",pax:"Number of guests",phone:"Phone number",wish:"A note for the couple (optional)",send:"Send RSVP",sending:"Sending…",thanks:"Thank you!",okYes:"{n}, we’ve recorded {p} guest(s). See you there, insya-Allah.",okNo:"{n}, your reply has been recorded. Thank you for your prayers.",edit:"Change my reply",wyes:"attending",wno:"can’t attend",
 eName:"Please enter your name.",ePhone:"Please enter a valid phone number, e.g. 012-345 6789.",eSend:"Your RSVP couldn’t be sent. Check your connection and try again, or WhatsApp the family below.",
@@ -451,7 +452,7 @@ function fitCover(archTop){let cs=1;covEl.style.setProperty("--cs",cs);
 while(cs>.6&&covEl.offsetTop+covEl.offsetHeight>archTop-14){cs-=.03;covEl.style.setProperty("--cs",cs.toFixed(2))}}
 if(document.fonts)document.fonts.ready.then(()=>{if(M)zoomGeo()});
 function split(){SP.length=0;document.querySelectorAll("h2.sp").forEach(h=>{const ws=h.textContent.trim().split(/\s+/);h.textContent="";
-const sp=ws.map((w,i)=>{const o=document.createElement("span"),n=document.createElement("span");o.className="w";n.textContent=w;n.style.setProperty("--i",i);o.appendChild(n);h.appendChild(o);if(i<ws.length-1)h.appendChild(document.createTextNode(" "));return n});SP.push({h,sp,top:0})})}
+const sp=ws.map((w,i)=>{const o=document.createElement("span"),n=document.createElement("span");o.className="w";n.textContent=w;n.style.setProperty("--i",i);o.appendChild(n);h.appendChild(o);if(i<ws.length-1)h.appendChild(h.classList.contains("brk")&&/,$/.test(w)?document.createElement("br"):document.createTextNode(" "));return n});SP.push({h,sp,top:0})})}
 const SNAP=[...document.querySelectorAll(".snapA")];
 function measure(){zoomGeo();const r=Math.max(0,heroEl.offsetHeight-innerHeight);SNAP.forEach((a,i)=>a.style.top=Math.round(r*i/2)+"px");RT=rvEl.getBoundingClientRect().top+scrollY;frame()}
 function frame(){const vh=innerHeight,y=scrollY;
@@ -472,7 +473,7 @@ const fill=(s,o)=>s.replace(/\{(\w+)\}/g,(_,k)=>o[k]);
 function renderWishes(){const el=$("wishes"),L=WISHES.filter(r=>r.w);
 if(!L.length){el.innerHTML=`<p class="wempty">${T[lang].wEmpty}</p>`;return}
 const shown=showAll?L:L.slice(0,6);
-el.innerHTML=shown.map(r=>`<div class="wish"><small>${esc(r.n)} · ${r.a==="hadir"?T[lang].wyes:T[lang].wno}</small><div>${esc(r.w)}</div></div>`).join("")+(L.length>6&&!showAll?`<button class="btn ghost wmore" id="wmore" type="button">${fill(T[lang].wMore,{n:L.length})}</button>`:"");
+el.innerHTML=shown.map(r=>`<div class="wish"><small>${esc(r.n)}</small><div>${esc(r.w)}</div></div>`).join("")+(L.length>6&&!showAll?`<button class="btn ghost wmore" id="wmore" type="button">${fill(T[lang].wMore,{n:L.length})}</button>`:"");
 const b=$("wmore");if(b)b.onclick=()=>{showAll=true;renderWishes();if(M)measure()}}
 async function loadWishes(){
 if(DEMO){WISHES=store.get("rsvps-demo",[]).slice().reverse();renderWishes();return}
