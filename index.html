@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="ms" class="lock">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -268,12 +268,56 @@ html.typing{scroll-snap-type:none}
 .card::after{content:"";position:absolute;inset:6px;border:1px solid rgba(176,138,62,.3);border-radius:21px;pointer-events:none}
 .rin>.card::after{border-color:rgba(226,194,124,.28)}
 .count div{position:relative}.count div::before{content:"";position:absolute;left:28%;right:28%;top:0;height:2px;border-radius:2px;background:var(--gold);opacity:.7}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero{height:auto}.pin{display:block;height:auto;min-height:100svh;padding:90px 0}.cover,.reveal,.invA{grid-area:auto;opacity:1;margin:0 auto 40px}.rbg{clip-path:none}.snapA{display:none}.hero{scroll-snap-align:start}}
+/* ---------- welcome: envelope + butterflies (the one tap that starts the music) ---------- */
+html.lock,html.lock body{overflow:hidden;height:100%}
+html.lock .names,html.lock .to{animation-play-state:paused}
+.wel{position:fixed;inset:0;z-index:60;display:grid;grid-template-rows:1fr auto 1fr;justify-items:center;padding:max(28px,env(safe-area-inset-top,0px)) 20px max(28px,env(safe-area-inset-bottom,0px));background:radial-gradient(120% 80% at 50% 32%,#8e1b38 0%,#5a0f22 56%,#3a0815 100%);color:#fbf1ea;overflow:hidden;transition:opacity .9s ease,visibility .9s}
+.wel.leave{opacity:0;visibility:hidden;pointer-events:none}
+.wel.leave .env{transform:scale(1.15);transition:transform .9s ease}
+.w-top{align-self:end;text-align:center;margin-bottom:clamp(18px,4svh,40px);position:relative;z-index:2}
+.w-eb{margin:0;font:500 12px/1.4 "Hanken Grotesk",sans-serif;letter-spacing:.32em;text-transform:uppercase;color:#e2c27c}
+.w-names{margin:4px 0 0;font:400 clamp(46px,12.5vw,76px)/1.15 "Great Vibes",cursive;color:#fbf1ea}.w-names i{font-style:normal;color:#e2c27c;font-size:.7em;padding:0 .08em}
+.w-to{margin:8px 0 0;font:400 12px/1.4 "Hanken Grotesk",sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#d9bfa9}.w-to b{display:block;font:400 22px/1.2 "Instrument Serif",serif;letter-spacing:0;text-transform:none;color:#fbf1ea;margin-top:2px}
+.w-foot{align-self:start;display:grid;justify-items:center;gap:12px;margin-top:clamp(24px,5svh,48px);position:relative;z-index:2;transition:opacity .4s}
+.wel.open .w-foot,.wel.open .w-top{opacity:0;transition:opacity .5s}
+.w-btn{min-height:50px;padding:0 30px;border-radius:999px;border:0;background:#e2c27c;color:#4a0c1c;font:500 14px/1 "Hanken Grotesk",sans-serif;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;box-shadow:0 14px 30px -12px rgba(0,0,0,.55)}
+.w-hint{margin:0;font:400 12.5px "Hanken Grotesk",sans-serif;letter-spacing:.06em;color:#d9bfa9}
+.env{--w:min(80vw,350px,calc(40svh * 1.45));position:relative;z-index:2;width:var(--w);aspect-ratio:1.45;border:0;padding:0;background:none;cursor:pointer;perspective:1100px;filter:drop-shadow(0 26px 28px rgba(0,0,0,.45));animation:envBob 3.4s ease-in-out infinite;-webkit-tap-highlight-color:transparent}
+@keyframes envBob{50%{translate:0 -7px}}
+.env>span{position:absolute;display:block}
+.e-back{inset:0;border-radius:8px;background:#55091d}
+.e-card{left:6%;right:6%;top:6%;bottom:9%;z-index:1;border-radius:6px;background:#fbf5ee;display:grid!important;place-content:center;text-align:center;color:#7a1530;box-shadow:inset 0 0 0 7px #fbf5ee,inset 0 0 0 8px rgba(176,138,62,.55);transition:transform 1.05s cubic-bezier(.2,.7,.2,1) .55s}
+.e-card b{display:block;font:400 calc(var(--w) * .15)/1 "Great Vibes",cursive}
+.e-card small{display:block;font:500 calc(var(--w) * .034) "Hanken Grotesk",sans-serif;letter-spacing:.22em;color:#b08a3e;margin-top:.5em}
+.e-front{inset:0;z-index:2;border-radius:8px;background:linear-gradient(165deg,#8d1a37,#6a1027);clip-path:polygon(0 0,50% 57%,100% 0,100% 100%,0 100%)}
+.e-flap{left:0;right:0;top:0;height:63%;z-index:3;transform-origin:50% 0;background:linear-gradient(180deg,#a0284a,#7a1530);clip-path:polygon(0 0,100% 0,50% 100%);transition:transform .85s cubic-bezier(.5,0,.2,1),z-index 0s .42s}
+.e-seal{left:50%;top:63%;width:calc(var(--w) * .21);aspect-ratio:1;translate:-50% -50%;z-index:4;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f6e2a6,#cfa04a 58%,#94702c);display:grid!important;place-items:center;font:400 calc(var(--w) * .068)/1 "Great Vibes",cursive;color:#5a0f22;box-shadow:0 4px 12px rgba(0,0,0,.4),inset 0 0 0 3px rgba(255,240,200,.35);transition:transform .45s ease,opacity .45s ease}
+.wel.open .env{animation:none}
+.wel.open .e-seal{transform:scale(1.35);opacity:0}
+.wel.open .e-flap{transform:rotateX(180deg);z-index:0}
+.wel.open .e-card{transform:translateY(-60%)}
+.bf{position:absolute;left:var(--x);top:var(--y);width:var(--s,34px);z-index:3;padding:6px;border:0;background:none;cursor:pointer;transition:transform 1.9s cubic-bezier(.3,.1,.3,1),opacity 1.6s ease .3s;-webkit-tap-highlight-color:transparent}
+.bf .bi{display:block;animation:drift var(--d,7s) ease-in-out var(--dd,0s) infinite alternate}
+@keyframes drift{0%{transform:translate(0,0) rotate(-10deg)}33%{transform:translate(16px,-14px) rotate(8deg)}66%{transform:translate(-12px,-24px) rotate(-6deg)}100%{transform:translate(10px,6px) rotate(12deg)}}
+.bf svg{display:block;width:100%;overflow:visible}
+.bf .wg{animation:flap var(--f,.3s) ease-in-out infinite alternate}
+@keyframes flap{to{transform:scaleX(.18)}}
+.bf .wg path{fill:var(--bc,#e2c27c);stroke:#9c7430;stroke-width:.7;stroke-linejoin:round}.bf .wg path+path{fill:var(--bc2,#f3dc9c)}
+.wel.open .bf:not(.burst){transform:translate(var(--ax),var(--ay)) scale(.75);opacity:0}
+.bf.burst{left:50%;top:50%;margin:-28px 0 0 -28px;opacity:0;pointer-events:none}
+.wel.open .bf.burst{animation:bfOut 2.1s cubic-bezier(.25,.6,.3,1) var(--bd,0s) forwards}
+@keyframes bfOut{0%{opacity:0;transform:translate(0,0) scale(.3)}18%{opacity:1}80%{opacity:1}100%{opacity:0;transform:translate(var(--ax),var(--ay)) scale(1.1)}}
+.wel .flw{z-index:0;--pt:#e2c27c;color:#e2c27c;opacity:.55;width:clamp(110px,34vw,220px)}
+.js-draw .wel .flw .fs{transition:stroke-dashoffset 2.6s cubic-bezier(.4,.1,.2,1) .2s;stroke-dashoffset:0}
+.js-draw .wel .flw .fp,.js-draw .wel .flw .fc{opacity:1}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero{height:auto}.pin{display:block;height:auto;min-height:100svh;padding:90px 0}.cover,.reveal,.invA{grid-area:auto;opacity:1;margin:0 auto 40px}.rbg{clip-path:none}.wel .bf{display:none}.snapA{display:none}.hero{scroll-snap-align:start}}
 </style>
+<noscript><style>.wel{display:none}html.lock,html.lock body{overflow:auto;height:auto}</style></noscript>
 </head>
 <body>
 <div class="orbs" aria-hidden="true"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div>
 <canvas id="fx" aria-hidden="true"></canvas>
+<div class="wel" id="wel" role="dialog" aria-label="Kad jemputan"><svg viewBox="0 0 200 200" class="flw tl" aria-hidden="true"></svg><svg viewBox="0 0 200 200" class="flw br" aria-hidden="true"></svg><div class="w-top"><p class="w-eb">Walimatulurus</p><p class="w-names">Alieya <i>&amp;</i> Farhan</p><p class="w-to" id="wTo" hidden><span data-i="toL"></span><b id="wToName"></b></p></div><button class="env" id="env" type="button" aria-label="Buka jemputan"><span class="e-back"></span><span class="e-card"><b>A&amp;F</b><small>02 · 01 · 2027</small></span><span class="e-front"></span><span class="e-flap"></span><span class="e-seal">A&amp;F</span></button><div class="w-foot"><button class="w-btn" id="wBtn" type="button" data-i="wOpen"></button><p class="w-hint" data-i="wHint"></p></div><div id="bfs"></div><template id="bfT"><svg viewBox="-22 -18 44 36" aria-hidden="true"><g class="wg"><path d="M0 -1 C-4 -14 -18 -18 -20 -8 C-21 0 -11 3 0 0Z"/><path d="M0 1 C-5 3 -13 8 -11 13 C-9 17 -3 10 0 1Z"/></g><g transform="scale(-1 1)"><g class="wg"><path d="M0 -1 C-4 -14 -18 -18 -20 -8 C-21 0 -11 3 0 0Z"/><path d="M0 1 C-5 3 -13 8 -11 13 C-9 17 -3 10 0 1Z"/></g></g><ellipse rx="1.4" ry="8" fill="#3a0815"/><path d="M0 -7 q-2 -6 -6 -8 M0 -7 q2 -6 6 -8" stroke="#3a0815" stroke-width=".8" fill="none"/></svg></template></div>
 <a class="pill brand" href="#hero">A &amp; F</a>
 <a class="fab" id="fab" href="#rsvp" data-i="fabT"></a>
 <div class="pill top" role="group" aria-label="Language"><button data-l="ms" aria-pressed="true">BM</button><button data-l="en" aria-pressed="false">EN</button><button class="mu off wait" id="mu" type="button" aria-label="Muzik"><span class="bars"><i></i><i></i><i></i></span></button></div>
@@ -395,7 +439,7 @@ rsvpK:"Mohon pengesahan kehadiran",rsvpT:"Dapat hadir bersama kami?",rsvpP:"Moho
 eName:"Sila isi nama anda.",ePhone:"Sila masukkan no. telefon yang sah.",eSend:"RSVP tidak dapat dihantar. Semak sambungan internet dan cuba lagi, atau hubungi keluarga melalui WhatsApp di bawah.",
 demo:"Mod percubaan: borang belum disambungkan ke Google Sheet, jadi jawapan hanya disimpan dalam pelayar ini.",prev:"Anda telah menghantar RSVP melalui peranti ini.\n• Untuk mengubah jawapan anda, sila gunakan nombor telefon yang sama.\n• Untuk RSVP bagi tetamu lain, sila gunakan nombor telefon yang berbeza.",
 wEmpty:"Belum ada ucapan. Jadilah yang pertama menulis ucapan untuk pengantin.",wMore:"Lihat semua ucapan ({n})",wFail:"Ucapan tidak dapat dimuatkan sekarang.",
-cdK:"Detik Menuju Hari Bahagia",wK:"Doa & ucapan",wT:"Ucapan tetamu",ctK:"Sebarang pertanyaan",ctT:"Hubungi kami",call:"Call",tap:"Buka Kad",gOpen:"Buka Kad",gGo:"Lihat Jemputan",gHint:"atau scroll ke bawah"},
+cdK:"Detik Menuju Hari Bahagia",wOpen:"Buka Jemputan",wHint:"Sentuh sampul atau rama-rama",wK:"Doa & ucapan",wT:"Ucapan tetamu",ctK:"Sebarang pertanyaan",ctT:"Hubungi kami",call:"Call",tap:"Buka Kad",gOpen:"Buka Kad",gGo:"Lihat Jemputan",gHint:"atau scroll ke bawah"},
 en:{fabT:"RSVP",cal:"Google Calendar",ics:"iPhone / Outlook",thx:"Thank you for your presence and prayers.",toL:"Dear",iT:"Walimatulurus",iP2:"with heartfelt gratitude invite {to} to the wedding of our beloved daughter",hon:"YBhg. Dato’ Sri/Datuk/Dato’/Tuan/Puan/Cik",iP3:"together with her chosen one",invite:"With grateful hearts, we invite you to our daughter’s wedding celebration.",dateLong:"Saturday, 2 January 2027",venue:"Dewan Tengku Zara, Shah Alam, Selangor",days:"days",hours:"hours",mins:"mins",secs:"secs",
 bis:"In the name of Allah",introT:"By His will we met, in His name we unite.",qt:"“And We created you in pairs.”",
 save:"Save the date",detT:"The celebration",dtH:"Date & time",dtP:"Saturday, 2 January 2027\n24 Rejab 1448H\n11.00 am to 4.00 pm",vnH:"Venue",vnP:"Dewan Tengku Zara\n15, Jalan 15/23, Seksyen 15\n40200 Shah Alam, Selangor",pgH:"The day",t1:"11.00 am",e1:"Celebration begins",t2:"12.30 pm",e2:"Couple’s arrival",t3:"4.00 pm",e3:"Event concludes",mapH:"Map",mapP:"Tap the map to move it.",mapTap:"Click to move the map",copyA:"Copy address",copied:"Copied",
@@ -403,7 +447,7 @@ rsvpK:"Kindly respond",rsvpT:"Will you join us?",rsvpP:"Please let us know so th
 eName:"Please enter your name.",ePhone:"Please enter a valid phone number.",eSend:"Your RSVP couldn’t be sent. Check your connection and try again, or WhatsApp the family below.",
 demo:"Test mode: this form isn’t connected to the Google Sheet yet, so replies are only saved in this browser.",prev:"You have already submitted an RSVP from this device.\n• To amend your reply, kindly use the same phone number.\n• To RSVP on behalf of another guest, kindly use a different phone number.",
 wEmpty:"No wishes yet. Be the first to write one for the couple.",wMore:"See all wishes ({n})",wFail:"Wishes can’t be loaded right now.",
-cdK:"Counting Down to the Day",wK:"Prayers & wishes",wT:"Guest wishes",ctK:"Any questions",ctT:"Contact us",call:"Call",tap:"Open the card",gOpen:"Open Card",gGo:"View Invitation",gHint:"or scroll down"}};
+cdK:"Counting Down to the Day",wOpen:"Open Invitation",wHint:"Tap the envelope or a butterfly",wK:"Prayers & wishes",wT:"Guest wishes",ctK:"Any questions",ctT:"Contact us",call:"Call",tap:"Open the card",gOpen:"Open Card",gGo:"View Invitation",gHint:"or scroll down"}};
 const M=!matchMedia("(prefers-reduced-motion:reduce)").matches,$=id=>document.getElementById(id);
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 const TO=(new URLSearchParams(location.search).get("to")||"").replace(/\s+/g," ").trim().slice(0,60);
@@ -578,7 +622,26 @@ function add(host,n,col,op){const w=document.createElement("div");w.className="s
 for(let i=0;i<n;i++){const e=document.createElement("i");e.className="spk";const st=e.style;st.left=(4+R()*92)+"%";st.top=(4+R()*92)+"%";
 st.setProperty("--z",(5+R()*9).toFixed(1)+"px");st.setProperty("--t",(2.6+R()*3).toFixed(2)+"s");st.setProperty("--dl2",(-R()*5).toFixed(2)+"s");st.setProperty("--o",op);if(col)st.setProperty("--sc",col);w.appendChild(e)}
 host.prepend(w)}
-add($("rbg"),26,"#e2c27c",".95");["intro","details","venue","contact"].forEach(id=>add($(id),7,"#c9a14f",".6"))})();
+add($("rbg"),26,"#e2c27c",".95");add($("wel"),22,"#e2c27c",".9");["intro","details","venue","contact"].forEach(id=>add($(id),7,"#c9a14f",".6"))})();
+/* ---------- welcome: envelope + butterflies. The tap that opens it also starts the music. ---------- */
+const wel=$("wel");let welOpen=false;
+if(TO){$("wTo").hidden=false;$("wToName").textContent=TO}
+(function(){let sd=29;const R=()=>(sd=sd*16807%2147483647)/2147483647,box=$("bfs"),tpl=$("bfT").innerHTML;
+const spots=[[6,18],[78,12],[2,56],[82,50],[14,82],[70,84]],cols=[["#e2c27c","#f3dc9c"],["#f6e6d0","#e2c27c"],["#e2c27c","#fbf1ea"]];
+function mk(x,y,burst,i){const b=document.createElement(burst?"span":"button");b.className="bf"+(burst?" burst":"");if(!burst){b.type="button";b.setAttribute("aria-label","Buka jemputan")}
+const st=b.style,c=cols[i%3],a=R()*6.283,dist=60+R()*45;st.setProperty("--x",x+"%");st.setProperty("--y",y+"%");st.setProperty("--s",(burst?44+R()*14:46+R()*18).toFixed(0)+"px");
+st.setProperty("--d",(5+R()*4).toFixed(2)+"s");st.setProperty("--dd",(-R()*6).toFixed(2)+"s");st.setProperty("--f",(.24+R()*.12).toFixed(2)+"s");st.setProperty("--bc",c[0]);st.setProperty("--bc2",c[1]);
+st.setProperty("--ax",(Math.cos(a)*dist).toFixed(0)+"vw");st.setProperty("--ay",(-40-R()*70).toFixed(0)+"vh");st.setProperty("--bd",(burst?.35+R()*.5:0).toFixed(2)+"s");
+b.innerHTML='<span class="bi">'+tpl+'</span>';box.appendChild(b)}
+spots.forEach(([x,y],i)=>mk(x,y,false,i));for(let i=0;i<9;i++)mk(50,50,true,i)})();
+function openWel(){if(welOpen)return;welOpen=true;startMusic();wel.classList.add("open");
+setTimeout(()=>{wel.classList.add("leave");document.documentElement.classList.remove("lock");scrollTo(0,0);if(M)measure()},M?1900:0);
+setTimeout(()=>{wel.hidden=true},M?2900:0);try{sessionStorage.setItem("kad-open","1")}catch(e){}}
+wel.addEventListener("click",e=>{if(e.target.closest("#env,#wBtn,.bf"))openWel()});
+wel.addEventListener("wheel",e=>{if(e.deltaY>20)openWel()},{passive:true});
+let wy0=null;wel.addEventListener("touchstart",e=>{wy0=e.touches[0].clientY},{passive:true});
+wel.addEventListener("touchend",e=>{if(wy0!=null&&wy0-e.changedTouches[0].clientY>50)openWel();wy0=null},{passive:true});
+addEventListener("keydown",e=>{if(!welOpen&&!wel.hidden&&(e.key==="Enter"||e.key===" ")&&document.activeElement===document.body){e.preventDefault();openWel()}});
 /* page dots: one per resting point */
 const PTS=[...document.querySelectorAll(".snapA,.pg")],dotsEl=$("dots");
 dotsEl.innerHTML=PTS.map((_,i)=>`<button type="button" aria-label="${i+1}/${PTS.length}"></button>`).join("");
@@ -595,6 +658,8 @@ addEventListener("click",()=>{const D=window.DeviceOrientationEvent;if(D&&typeof
 
 setLang(store.get("lang","ms"));
 loadWishes();
+/* came back in the same session (e.g. after opening Waze): skip the envelope */
+try{if(sessionStorage.getItem("kad-open")==="1"){welOpen=true;wel.hidden=true;document.documentElement.classList.remove("lock")}}catch(e){}
 </script>
 </body>
 </html>

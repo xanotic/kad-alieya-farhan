@@ -5,7 +5,7 @@ Laman web jemputan digital untuk Walimatulurus **Alieya Husna binti Asrul Ependi
 **Live:** https://alieyadanfarhan.tech
 
 ## Apa ada dalam kad
-- Terus ke laman utama (tiada kad "Buka Kad"); muzik bermula bila tetamu sentuh skrin, atau tekan butang muzik
+- Skrin alu-aluan: sampul surat + rama-rama. Satu sentuhan buka sampul, muzik terus main (pelayar tak benarkan muzik tanpa sentuhan), kemudian ke laman utama
 - Setiap scroll berhenti tepat pada satu halaman penuh (scroll snap); hero ilustrasi pengantin bawah gerbang bunga
 - Teks jemputan, kiraan detik, butiran majlis, peta, atur cara
 - **RSVP terus masuk Google Sheet** (tiada database), ucapan tetamu dipaparkan semula
