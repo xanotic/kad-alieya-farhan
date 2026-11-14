@@ -93,12 +93,12 @@ h2{font-size:clamp(38px,6.4vw,64px);margin-bottom:22px}
 .fr{aspect-ratio:3/4;border-radius:999px 999px 22px 22px;overflow:hidden;position:relative;border:1px solid var(--line)}
 .fr:nth-child(2){margin-top:44px}
 .fr .in{position:absolute;left:0;right:0;top:-10%;height:120%;display:grid;place-items:center;font-size:13px;opacity:.95}
-.fr:nth-child(1) .in{background:linear-gradient(160deg,#f6e6e2,#eedcb0)}
-.fr:nth-child(2) .in{background:linear-gradient(160deg,var(--o1),var(--deep))}
-.fr:nth-child(3) .in{background:linear-gradient(160deg,var(--o2),var(--o3))}
+.fr{border-color:rgba(176,138,62,.55)!important}
+.fr:nth-child(1) .in,.fr:nth-child(3) .in{background:#efdfc4}
+.fr:nth-child(2) .in{background:#7a1530}
 .fr{container-type:inline-size}
-.fr .in .aq{font:italic 400 10.6cqi/1.25 "Instrument Serif",serif;color:var(--ink);padding:14% 9% 0;text-wrap:pretty}
-.fr .in .aq small{display:block;font:400 7.4cqi/1.3 "Hanken Grotesk",sans-serif;font-style:normal;color:var(--gold);margin-top:.8em;white-space:nowrap}
+.fr .in .aq{font:italic 400 10.6cqi/1.25 "Instrument Serif",serif;color:#5a0f22;padding:14% 9% 0;text-wrap:pretty}
+.fr .in .aq small{display:block;font:400 7.4cqi/1.3 "Hanken Grotesk",sans-serif;font-style:normal;color:#93712c;margin-top:.8em;white-space:nowrap}
 .fr .in img{max-width:72%;height:auto;filter:drop-shadow(0 6px 10px rgba(0,0,0,.12))}
 .fr .in .ph{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;filter:none}
 .fr .in .dt{font:400 clamp(26px,5vw,40px)/1.05 "Instrument Serif",serif;color:var(--ink)}
@@ -149,7 +149,8 @@ textarea{resize:vertical;min-height:70px}
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:inset(50%);white-space:nowrap}
 .fld{display:grid;gap:6px;font-size:14px;color:var(--mute)}.bad select{border-bottom-color:var(--err)}.bad .seg span{border-color:var(--err)}
 .bad input{border-bottom-color:var(--err)}
-.note{font-size:13.5px;line-height:1.5;color:var(--notet);background:var(--note);border-radius:12px;padding:10px 14px;margin:0}
+.rin:has(#prevNote:not([hidden])) .rhead .lead{display:none}
+.note{white-space:pre-line;font-size:13px;line-height:1.45;color:var(--notet);background:var(--note);border-radius:12px;padding:10px 14px;margin:0}
 .hp{display:none}
 .ok{display:none;text-align:center;padding:20px 0}.ok h3{font-size:36px;margin-bottom:8px}
 .ok .links{margin-top:22px}
@@ -233,7 +234,7 @@ html.typing{scroll-snap-type:none}
 .intro .quote{font-size:17px}.intro.pg h2{font-size:25px}.gal{max-width:300px}.fr:nth-child(2){margin-top:16px}
 .det .ico{display:none}.det .info h3{font-size:22px}.det .card{padding:14px 16px 16px}.det .info p{font-size:14px;line-height:1.5}
 .vtxt .ico{display:none}.vcard{gap:12px;padding:14px}.vcard .map{aspect-ratio:16/10}.vtxt p{font-size:14px;line-height:1.5}
-.rhead .lead{display:none}.rhead h2{font-size:30px}.rin .card{padding:16px 16px}form{gap:12px}label{gap:2px}textarea{min-height:44px}.seg span{padding:10px 6px}
+.rhead .lead{display:none}.rhead h2{font-size:30px}.rin:has(#prevNote:not([hidden])) .rhead .kick{display:none}#prevNote{font-size:12px;padding:8px 12px}.rin .card{padding:16px 16px}form{gap:12px}label{gap:2px}textarea{min-height:44px}.seg span{padding:10px 6px}
 .contact footer{padding-top:14px}.fdoa{font-size:19px}.fn{font-size:34px;margin:6px 0 2px}.ct{padding:10px 12px}
 }
 @media (min-width:900px){
@@ -354,15 +355,15 @@ bis:"Bismillahirrahmanirrahim",introT:"Dengan izin-Nya kami bertemu, dengan nama
 save:"Simpan tarikhnya",detT:"Butiran majlis",dtH:"Tarikh & masa",dtP:"Sabtu, 2 Januari 2027\n24 Rejab 1448H\n11.00 pagi hingga 4.00 petang",vnH:"Lokasi",vnP:"Dewan Tengku Zara\n15, Jalan 15/23, Seksyen 15\n40200 Shah Alam, Selangor",pgH:"Atur cara",t1:"11.00 pagi",e1:"Majlis bermula",t2:"12.30 tengah hari",e2:"Ketibaan pengantin",t3:"4.00 petang",e3:"Majlis berakhir",mapH:"Peta",mapP:"Ketik peta untuk menggerakkannya.",mapTap:"Click untuk menggerakkan peta",copyA:"Salin alamat",copied:"Disalin",
 rsvpK:"Mohon pengesahan kehadiran",rsvpT:"Dapat hadir bersama kami?",rsvpP:"Mohon sahkan kehadiran anda supaya keluarga dapat membuat persiapan jamuan secukupnya.",name:"Nama",att:"Kehadiran",ePax:"Sila pilih bilangan.",eAtt:"Sila pilih kehadiran anda.",yes:"Insya-Allah, hadir",no:"Tidak dapat hadir",pax:"Bilangan tetamu",phone:"No. telefon",wish:"Ucapan untuk pengantin (pilihan)",send:"Hantar RSVP",sending:"Menghantar…",thanks:"Terima kasih!",okYes:"{n}, kehadiran {p} orang telah direkodkan. Jumpa nanti, insya-Allah.",okNo:"{n}, jawapan anda telah direkodkan. Terima kasih atas doa anda.",edit:"Ubah jawapan",wyes:"hadir",wno:"tidak dapat hadir",
 eName:"Sila isi nama anda.",ePhone:"Sila masukkan no. telefon yang sah.",eSend:"RSVP tidak dapat dihantar. Semak sambungan internet dan cuba lagi, atau hubungi keluarga melalui WhatsApp di bawah.",
-demo:"Mod percubaan: borang belum disambungkan ke Google Sheet, jadi jawapan hanya disimpan dalam pelayar ini.",prev:"Anda sudah menghantar RSVP dari peranti ini. Hantar semula untuk mengemas kini; jawapan dengan nombor telefon yang sama akan diganti.",
+demo:"Mod percubaan: borang belum disambungkan ke Google Sheet, jadi jawapan hanya disimpan dalam pelayar ini.",prev:"Anda sudah menghantar RSVP dari peranti ini.\n• Nak tukar jawapan? Kekalkan nombor telefon yang sama.\n• Nak RSVP untuk orang lain? Guna nombor telefon yang berbeza.",
 wEmpty:"Belum ada ucapan. Jadilah yang pertama menulis ucapan untuk pengantin.",wMore:"Lihat semua ucapan ({n})",wFail:"Ucapan tidak dapat dimuatkan sekarang.",
 cdK:"Detik Menuju Hari Bahagia",wK:"Doa & ucapan",wT:"Ucapan tetamu",ctK:"Sebarang pertanyaan",ctT:"Hubungi kami",call:"Call",tap:"Buka Kad",gOpen:"Buka Kad",gGo:"Lihat Jemputan",gHint:"atau scroll ke bawah"},
 en:{fabT:"RSVP",cal:"Google Calendar",ics:"iPhone / Outlook",thx:"Thank you for your presence and prayers.",toL:"Dear",iT:"Walimatulurus",iP2:"with heartfelt gratitude invite {to} to the wedding of our beloved daughter",hon:"YBhg. Dato’ Sri/Datuk/Dato’/Tuan/Puan/Cik",iP3:"together with her chosen one",invite:"With grateful hearts, we invite you to our daughter’s wedding celebration.",dateLong:"Saturday, 2 January 2027",venue:"Dewan Tengku Zara, Shah Alam, Selangor",days:"days",hours:"hours",mins:"mins",secs:"secs",
 bis:"In the name of Allah",introT:"By His will we met, in His name we unite.",qt:"“And We created you in pairs.”",
 save:"Save the date",detT:"The celebration",dtH:"Date & time",dtP:"Saturday, 2 January 2027\n24 Rejab 1448H\n11.00 am to 4.00 pm",vnH:"Venue",vnP:"Dewan Tengku Zara\n15, Jalan 15/23, Seksyen 15\n40200 Shah Alam, Selangor",pgH:"The day",t1:"11.00 am",e1:"Celebration begins",t2:"12.30 pm",e2:"Couple’s arrival",t3:"4.00 pm",e3:"Event concludes",mapH:"Map",mapP:"Tap the map to move it.",mapTap:"Click to move the map",copyA:"Copy address",copied:"Copied",
-rsvpK:"Kindly respond",rsvpT:"Will you join us?",rsvpP:"Please let us know so the family can prepare enough food for everyone.",name:"Name",att:"Attendance",ePax:"Please choose a number.",eAtt:"Please choose your attendance.",yes:"Yes, I’ll be there",no:"Can’t make it",pax:"Number of guests",phone:"Phone number",wish:"A note for the couple (optional)",send:"Send RSVP",sending:"Sending…",thanks:"Thank you!",okYes:"{n}, we’ve recorded {p} guest(s). See you there, insya-Allah.",okNo:"{n}, your reply has been recorded. Thank you for your prayers.",edit:"Change my reply",wyes:"attending",wno:"can’t attend",
+rsvpK:"Kindly respond",rsvpT:"Will you join us?",rsvpP:"Please let us know so the family can prepare enough food for everyone.",name:"Name",att:"Attendance",ePax:"Please choose a number.",eAtt:"Please choose your attendance.",yes:"Yes, I’ll be there",no:"Can’t make it",pax:"Guests",phone:"Phone number",wish:"A note for the couple (optional)",send:"Send RSVP",sending:"Sending…",thanks:"Thank you!",okYes:"{n}, we’ve recorded {p} guest(s). See you there, insya-Allah.",okNo:"{n}, your reply has been recorded. Thank you for your prayers.",edit:"Change my reply",wyes:"attending",wno:"can’t attend",
 eName:"Please enter your name.",ePhone:"Please enter a valid phone number.",eSend:"Your RSVP couldn’t be sent. Check your connection and try again, or WhatsApp the family below.",
-demo:"Test mode: this form isn’t connected to the Google Sheet yet, so replies are only saved in this browser.",prev:"You’ve already sent an RSVP from this device. Send again to update it; a reply with the same phone number is replaced.",
+demo:"Test mode: this form isn’t connected to the Google Sheet yet, so replies are only saved in this browser.",prev:"You’ve already sent an RSVP from this device.\n• To change your reply, keep the same phone number.\n• To RSVP for someone else, use a different phone number.",
 wEmpty:"No wishes yet. Be the first to write one for the couple.",wMore:"See all wishes ({n})",wFail:"Wishes can’t be loaded right now.",
 cdK:"Counting Down to the Day",wK:"Prayers & wishes",wT:"Guest wishes",ctK:"Any questions",ctT:"Contact us",call:"Call",tap:"Open the card",gOpen:"Open Card",gGo:"View Invitation",gHint:"or scroll down"}};
 const M=!matchMedia("(prefers-reduced-motion:reduce)").matches,$=id=>document.getElementById(id);
@@ -459,11 +460,12 @@ $("copyAddr").onclick=async()=>{const b=$("copyAddr");try{await navigator.clipbo
 /* Phones only allow sound to start inside a real tap (click / touchend / key), not on the first touch-down,
    so keep retrying on every tap until it plays. The button is always shown so guests can start/stop it. */
 const bgm=$("bgm"),mu=$("mu");let musicOk=true,userOff=false,wasPlaying=false;bgm.volume=.8;
-const TAPS=["click","touchend","keydown"];
+const TAPS=["pointerup","touchend","click","keydown","mousedown"];
 function playMusic(){return bgm.play().then(()=>{mu.hidden=false;mu.classList.remove("off","wait");TAPS.forEach(t=>removeEventListener(t,startMusic,true))})}
 function startMusic(e){if(!musicOk||userOff||!bgm.paused)return;if(e&&e.target&&e.target.closest&&e.target.closest("#mu"))return;
 playMusic().catch(()=>{if(musicOk)mu.hidden=false})}
 TAPS.forEach(t=>addEventListener(t,startMusic,{capture:true,passive:true}));
+bgm.preload="auto";startMusic();addEventListener("pageshow",()=>startMusic());
 bgm.addEventListener("error",()=>{musicOk=false;mu.hidden=true});
 mu.onclick=()=>{if(bgm.paused){userOff=false;playMusic().catch(()=>{})}else{userOff=true;bgm.pause();mu.classList.add("off")}};
 document.addEventListener("visibilitychange",()=>{if(document.hidden){wasPlaying=!bgm.paused;bgm.pause()}else if(wasPlaying&&!userOff)bgm.play().catch(()=>{})});
