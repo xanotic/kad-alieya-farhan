@@ -51,9 +51,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .reveal,.invA{opacity:0}
 .invA{--u:clamp(12.5px,1.9svh,17px);font-size:var(--u);text-align:center;max-width:30em;line-height:1.5;justify-self:center}
 .invA p{margin:0}
-.invA .t1{font:400 1.25em/1.2 "Instrument Serif",serif;letter-spacing:.04em;color:var(--gold);margin-bottom:1em}
+.invA .t1{width:8.5em;aspect-ratio:520/207;margin:0 auto .8em;background:var(--gold);-webkit-mask:url(assets/walimah.png) center/contain no-repeat;mask:url(assets/walimah.png) center/contain no-repeat}
 .invA .ar{font-family:"Amiri",serif}
-.invA .ar.b{font-size:2.1em;line-height:1.5;margin-bottom:.1em}
+.invA .ar.b{font-size:2.1em;line-height:1.5;margin-bottom:.45em}
+.invA .i2 b.one{display:block;white-space:nowrap;font-size:min(1em,calc((100vw - 52px)/25.5))}
 .invA .ar:not(.b){font-size:1.35em;line-height:1.7;margin-bottom:1em;color:var(--mute)}
 .invA .i2{color:var(--mute);margin:0 auto .9em;max-width:26em}
 .invA .i2 b{color:var(--ink);font-weight:500}
@@ -62,11 +63,12 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .invA .par i{display:block;font:400 1.7em/1.1 "Great Vibes",cursive;color:var(--gold);margin:.1em 0;font-style:normal}
 .invA .bn b{font:400 2.05em/1.15 "Great Vibes",cursive;text-wrap:balance}
 .invA .bn small{display:block;color:var(--mute);margin:.1em 0}
-.cover{align-self:start;padding-top:max(80px,10svh)}
+.cover{align-self:start;padding-top:max(96px,13svh)}
+.cover .sub{font-size:max(13.5px,calc(1em*var(--cs,1)))}
 @keyframes rise{from{opacity:0;transform:translateY(40px)}}
 .to{font:500 12px/1.4 "Hanken Grotesk",sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0 0 10px;animation:rise 1.4s .1s cubic-bezier(.2,.7,.2,1) both}
 .to b{display:block;font:400 22px/1.2 "Instrument Serif",serif;letter-spacing:0;text-transform:none;color:var(--ink);margin-top:4px}
-.names{font:400 clamp(68px,19vw,92px)/1.02 "Great Vibes",cursive;letter-spacing:0;text-shadow:0 0 30px var(--bg);animation:rise 1.4s .2s cubic-bezier(.2,.7,.2,1) both}
+.names{font:400 calc(clamp(68px,19vw,92px)*var(--cs,1))/1.02 "Great Vibes",cursive;letter-spacing:0;text-shadow:0 0 30px var(--bg);animation:rise 1.4s .2s cubic-bezier(.2,.7,.2,1) both}
 .names span,.names i{display:block}.names i{font-style:normal;font-size:.55em;color:var(--gold);line-height:1}
 @media (min-width:900px){.names{font-size:clamp(88px,7.6vw,112px)}.names span,.names i{display:inline-block}.names i{padding:0 .2em;font-size:.6em}}
 .sub{color:var(--ink);opacity:.75;margin:18px auto 0;max-width:36ch;animation:rise 1.4s .4s cubic-bezier(.2,.7,.2,1) both}
@@ -259,10 +261,10 @@ html.lock .names,html.lock .sub,html.lock .to{animation-play-state:paused}
 <g id="fl2"></g></svg></div>
 <div class="cover" id="cover"><p class="to" id="toBox" hidden><span data-i="toL"></span><b id="toName"></b></p><h1 class="names"><span>Alieya</span><i>&amp;</i><span>Farhan</span></h1><p class="sub" data-i="invite"></p><div class="hint"></div></div>
 <div class="invA" id="invA">
-<p class="t1" data-i="iT"></p>
+<p class="t1" role="img" aria-label="Walimatulurus"></p>
 <p class="ar b" lang="ar" dir="rtl">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
 <p class="ar" lang="ar" dir="rtl">السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللّٰهِ وَبَرَكَاتُهُ</p>
-<div class="par"><b>Asrul Ependi bin Abdullah</b><i>&amp;</i><b>Dr Fazrina Ayu bt Abdul Sani</b></div>
+<div class="par"><b>Asrul Ependi bin Abdullah</b><i>&amp;</i><b>Dr Fazrina Ayu binti Abdul Sani</b></div>
 <p class="i2" id="iP2"></p>
 <div class="bn"><b>Alieya Husna binti Asrul Ependi</b><small data-i="iP3"></small><b>Muhammad Farhan bin Datuk Md Fauzi</b></div>
 </div>
@@ -368,7 +370,11 @@ const grp=document.getElementById("grp"),fabEl=$("fab");let ZO={ox:0,oy:0,cx:0,c
 function zoomGeo(){const W=picEl.offsetWidth,H=picEl.offsetHeight,k=Math.max(W,H)/1000,sc=H>W?.7:.62;
 grp.setAttribute("transform","translate(500 1000) scale("+sc+") translate(-500 -1000)");
 ZO.ox=W/2;ZO.oy=H-300*sc*k;ZO.cx=W/2;ZO.cy=H*.46;ZO.S=Math.min(5,Math.max(2,.7*H/(270*sc*k)));
-picEl.style.transformOrigin=ZO.ox+"px "+ZO.oy+"px"}
+picEl.style.transformOrigin=ZO.ox+"px "+ZO.oy+"px";fitCover(H-782*sc*k)}
+/* shrink the cover text until it ends above the floral arch, whatever the screen size */
+function fitCover(archTop){let cs=1;covEl.style.setProperty("--cs",cs);
+while(cs>.6&&covEl.offsetTop+covEl.offsetHeight>archTop-14){cs-=.03;covEl.style.setProperty("--cs",cs.toFixed(2))}}
+if(document.fonts)document.fonts.ready.then(()=>{if(M)zoomGeo()});
 function split(){SP.length=0;document.querySelectorAll("h2.sp").forEach(h=>{const ws=h.textContent.trim().split(/\s+/);h.textContent="";
 const sp=ws.map((w,i)=>{const o=document.createElement("span"),n=document.createElement("span");o.className="w";n.textContent=w;o.appendChild(n);h.appendChild(o);if(i<ws.length-1)h.appendChild(document.createTextNode(" "));return n});SP.push({h,sp,top:0})})}
 function measure(){zoomGeo();const y=scrollY;
@@ -412,7 +418,7 @@ renderWishes();if(M)measure()}
 
 function setLang(l){lang=l;store.set("lang",l);document.documentElement.lang=l;
 document.querySelectorAll("[data-i]").forEach(e=>{const v=T[l][e.dataset.i];if(v)e.textContent=v});
-$("iP2").innerHTML=esc(T[l].iP2).replace("{to}","<b>"+esc(TO||T[l].hon)+"</b>");
+$("iP2").innerHTML=esc(T[l].iP2).replace("{to}","<b"+(TO?"":" class=\"one\"")+">"+esc(TO||T[l].hon)+"</b>");
 document.querySelectorAll(".top button[data-l]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===l));renderWishes();if(typeof gLabel==="function")gLabel();if(M){split();measure()}}
 document.querySelectorAll(".top button[data-l]").forEach(b=>b.onclick=()=>setLang(b.dataset.l));
 if(TO){$("toBox").hidden=false;$("toName").textContent=TO}
