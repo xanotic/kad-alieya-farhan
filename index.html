@@ -245,15 +245,21 @@ html.typing{scroll-snap-type:none}
 .rin.pg>.card{margin:0}.rin:has(#prevNote:not([hidden])) form{gap:16px}#prevNote{font-size:12.5px}
 .wall{max-width:760px}
 }
-/* ---------- accessories: florals from the Canva card, gold sparkles, stationery frames ---------- */
+/* ---------- accessories: line-art flowers, gold sparkles, stationery frames ---------- */
+.flw{position:absolute;z-index:-1;width:clamp(104px,30vw,190px);aspect-ratio:1;pointer-events:none;color:var(--gold);--pt:var(--ink);opacity:.85;overflow:visible}
+.fs{fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.fp{fill:var(--pt);fill-opacity:.07;stroke:var(--pt);stroke-opacity:.55;stroke-width:1.1}
+.fc{fill:currentColor}
+.flw.tl{top:6px;left:calc(50% - 50vw)}.flw.tr{top:6px;right:calc(50% - 50vw);transform:scaleX(-1)}
+.flw.bl{bottom:0;left:calc(50% - 50vw);transform:scaleY(-1)}.flw.br{bottom:0;right:calc(50% - 50vw);transform:scale(-1,-1)}
+.rbg .flw{z-index:0;--pt:#e2c27c;color:#e2c27c;opacity:.7}
+.rbg .flw.mid{top:50%;left:0;bottom:auto;transform:none}
+.flw .fs{stroke-dasharray:1;stroke-dashoffset:0}
+.js-draw .flw .fs{stroke-dashoffset:1}
+.js-draw .in .flw .fs,.js-draw .rbg .flw .fs{transition:stroke-dashoffset 2.6s cubic-bezier(.4,.1,.2,1) .3s;stroke-dashoffset:0}
+.js-draw .flw .fp,.js-draw .flw .fc{opacity:0;transition:opacity 1.2s ease 1.6s}
+.js-draw .in .flw .fp,.js-draw .in .flw .fc,.js-draw .rbg .flw .fp,.js-draw .rbg .flw .fc{opacity:1}
 .pg{position:relative}
-.flo{position:absolute;top:0;z-index:-1;width:min(54vw,420px);aspect-ratio:760/181;background:center/contain no-repeat;pointer-events:none;filter:drop-shadow(0 8px 12px rgba(90,15,34,.12))}
-.flo.l{left:calc(50% - 50vw);background-image:url(assets/floral-tl.png)}
-.flo.r{right:calc(50% - 50vw);background-image:url(assets/floral-tr.png)}
-.flo.bq{top:auto;bottom:0;left:50%;translate:-50% 0;width:min(84vw,440px);aspect-ratio:900/258;background-image:url(assets/bouquet.png);opacity:.92}
-.flo.dn{top:auto;bottom:0;transform:scaleY(-1);opacity:.85}
-.in .flo{animation:floIn 1.4s cubic-bezier(.2,.7,.2,1) both}@keyframes floIn{from{opacity:0;translate:0 -14px}}
-.in .flo.bq{animation-name:bqIn}@keyframes bqIn{from{opacity:0;translate:-50% 18px}}
 .spk{position:absolute;width:var(--z,9px);height:var(--z,9px);background:var(--sc,#e2c27c);clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);pointer-events:none;opacity:0;animation:tw var(--t,3.4s) ease-in-out var(--dl2,0s) infinite}
 @keyframes tw{0%,100%{opacity:0;transform:scale(.3) rotate(0)}50%{opacity:var(--o,.9);transform:scale(1) rotate(45deg)}}
 .spks{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
@@ -262,8 +268,6 @@ html.typing{scroll-snap-type:none}
 .card::after{content:"";position:absolute;inset:6px;border:1px solid rgba(176,138,62,.3);border-radius:21px;pointer-events:none}
 .rin>.card::after{border-color:rgba(226,194,124,.28)}
 .count div{position:relative}.count div::before{content:"";position:absolute;left:28%;right:28%;top:0;height:2px;border-radius:2px;background:var(--gold);opacity:.7}
-@media (max-width:640px){.flo{width:68vw}}
-@media (max-height:740px) and (max-width:640px){.flo{width:56vw}.flo.bq{width:64vw}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero{height:auto}.pin{display:block;height:auto;min-height:100svh;padding:90px 0}.cover,.reveal,.invA{grid-area:auto;opacity:1;margin:0 auto 40px}.rbg{clip-path:none}.snapA{display:none}.hero{scroll-snap-align:start}}
 </style>
 </head>
@@ -275,6 +279,21 @@ html.typing{scroll-snap-type:none}
 <div class="pill top" role="group" aria-label="Language"><button data-l="ms" aria-pressed="true">BM</button><button data-l="en" aria-pressed="false">EN</button><button class="mu off wait" id="mu" type="button" aria-label="Muzik"><span class="bars"><i></i><i></i><i></i></span></button></div>
 <audio id="bgm" src="assets/lagu.mp3" loop preload="metadata" playsinline></audio>
 <nav class="dots" id="dots" aria-label="Halaman"></nav>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><symbol id="sprig" viewBox="0 0 200 200">
+<path class="fs" pathLength="1" d="M6 198 C36 166 64 136 92 106 C118 78 140 56 170 30"/>
+<path class="fs" pathLength="1" d="M58 146 C70 128 86 118 104 114"/>
+<path class="fs" pathLength="1" d="M112 86 C106 66 112 50 126 40"/>
+<path class="fs" pathLength="1" d="M30 176 C24 160 26 148 34 138"/>
+<path class="fs" pathLength="1" d="M38 168 q14 -24 38 -22 q-14 24 -38 22z"/>
+<path class="fs" pathLength="1" d="M74 124 q-6 -26 14 -40 q6 26 -14 40z"/>
+<path class="fs" pathLength="1" d="M122 68 q20 -14 40 -4 q-20 14 -40 4z"/>
+<path class="fs" pathLength="1" d="M94 104 q22 -4 32 12 q-22 4 -32 -12z"/>
+<path class="fs" pathLength="1" d="M142 50 q4 -22 24 -28 q-4 22 -24 28z"/>
+<g transform="translate(170 30)"><g class="fp"><ellipse rx="6.5" ry="12" cy="-11"/><ellipse rx="6.5" ry="12" cy="-11" transform="rotate(72)"/><ellipse rx="6.5" ry="12" cy="-11" transform="rotate(144)"/><ellipse rx="6.5" ry="12" cy="-11" transform="rotate(216)"/><ellipse rx="6.5" ry="12" cy="-11" transform="rotate(288)"/></g><circle class="fc" r="3.4"/></g>
+<g transform="translate(104 114) scale(.72)"><g class="fp"><ellipse rx="6.5" ry="12" cy="-11"/><ellipse rx="6.5" ry="12" cy="-11" transform="rotate(72)"/><ellipse rx="6.5" ry="12" cy="-11" transform="rotate(144)"/><ellipse rx="6.5" ry="12" cy="-11" transform="rotate(216)"/><ellipse rx="6.5" ry="12" cy="-11" transform="rotate(288)"/></g><circle class="fc" r="3.4"/></g>
+<g class="fp"><ellipse cx="126" cy="38" rx="4" ry="6.5" transform="rotate(30 126 38)"/><ellipse cx="34" cy="136" rx="3.6" ry="6" transform="rotate(-10 34 136)"/></g>
+<circle class="fc" cx="150" cy="96" r="1.8"/><circle class="fc" cx="60" cy="100" r="1.5"/><circle class="fc" cx="160" cy="70" r="1.3"/>
+</symbol></defs></svg>
 <main>
 <section class="hero" id="hero"><i class="snapA"></i><i class="snapA"></i><i class="snapA"></i><div class="pin">
 <div class="photo" id="photo">
@@ -313,7 +332,7 @@ html.typing{scroll-snap-type:none}
 <div class="count"><div><b id="d">0</b><span data-i="days"></span></div><div><b id="h">0</b><span data-i="hours"></span></div><div><b id="m">0</b><span data-i="mins"></span></div><div><b id="s">0</b><span data-i="secs"></span></div></div></div>
 </div></section>
 
-<section class="intro pg" id="intro"><i class="flo l" aria-hidden="true"></i><i class="flo r" aria-hidden="true"></i><div class="mono">A&amp;F</div><p class="kick" data-i="bis"></p><h2 class="sp brk" data-i="introT"></h2>
+<section class="intro pg" id="intro"><svg viewBox="0 0 200 200" class="flw tl" aria-hidden="true"><use href="#sprig"/></svg><svg viewBox="0 0 200 200" class="flw br" aria-hidden="true"><use href="#sprig"/></svg><div class="mono">A&amp;F</div><p class="kick" data-i="bis"></p><h2 class="sp brk" data-i="introT"></h2>
 <div class="gal">
 <div class="fr"><div class="in"><img src="assets/walimah.png" alt="Walimatul urus" width="520" height="207"><img class="ph" src="assets/gambar-1.jpg" alt="" hidden></div></div>
 <div class="fr"><div class="in"><img src="assets/monogram.png" alt="Monogram فع" width="440" height="400"><img class="ph" src="assets/gambar-2.jpg" alt="" hidden></div></div>
@@ -321,18 +340,18 @@ html.typing{scroll-snap-type:none}
 </div>
 <div class="band" aria-hidden="true"><div class="marq">Alieya &amp; Farhan · 02.01.2027 · Alieya &amp; Farhan · 02.01.2027 · Alieya &amp; Farhan</div></div></section>
 
-<section class="det pg" id="details"><i class="flo r" aria-hidden="true"></i><i class="flo l dn" aria-hidden="true"></i><div class="orn" aria-hidden="true"><svg width="150" height="22" viewBox="0 0 150 22" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 11H58M92 11H150" opacity=".6"/><g transform="translate(75 11)"><circle r="2.2" fill="currentColor" stroke="none"/><ellipse cx="0" cy="-6" rx="2.6" ry="4.4"/><ellipse cx="0" cy="6" rx="2.6" ry="4.4"/><ellipse cx="-6" cy="0" rx="4.4" ry="2.6"/><ellipse cx="6" cy="0" rx="4.4" ry="2.6"/></g></svg></div><p class="kick" data-i="save"></p><h2 class="sp" data-i="detT"></h2>
+<section class="det pg" id="details"><svg viewBox="0 0 200 200" class="flw tr" aria-hidden="true"><use href="#sprig"/></svg><svg viewBox="0 0 200 200" class="flw bl" aria-hidden="true"><use href="#sprig"/></svg><div class="orn" aria-hidden="true"><svg width="150" height="22" viewBox="0 0 150 22" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 11H58M92 11H150" opacity=".6"/><g transform="translate(75 11)"><circle r="2.2" fill="currentColor" stroke="none"/><ellipse cx="0" cy="-6" rx="2.6" ry="4.4"/><ellipse cx="0" cy="6" rx="2.6" ry="4.4"/><ellipse cx="-6" cy="0" rx="4.4" ry="2.6"/><ellipse cx="6" cy="0" rx="4.4" ry="2.6"/></g></svg></div><p class="kick" data-i="save"></p><h2 class="sp" data-i="detT"></h2>
 <div class="info">
 <div class="card"><div class="ico"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></div><h3 data-i="dtH"></h3><p data-i="dtP"></p><div class="links"><a class="btn ghost" id="gcal" target="_blank" rel="noopener" data-i="cal"></a><button class="btn ghost" id="ics" type="button" data-i="ics"></button></div></div>
 <div class="card"><div class="ico"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div><h3 data-i="pgH"></h3><div class="tl"><div><b data-i="t1"></b><span data-i="e1"></span></div><div><b data-i="t2"></b><span data-i="e2"></span></div><div><b data-i="t3"></b><span data-i="e3"></span></div></div></div>
 </div></section>
 
-<section class="det venue pg" id="venue"><i class="flo l" aria-hidden="true"></i><div class="orn" aria-hidden="true"><svg width="150" height="22" viewBox="0 0 150 22" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 11H58M92 11H150" opacity=".6"/><g transform="translate(75 11)"><circle r="2.2" fill="currentColor" stroke="none"/><ellipse cx="0" cy="-6" rx="2.6" ry="4.4"/><ellipse cx="0" cy="6" rx="2.6" ry="4.4"/><ellipse cx="-6" cy="0" rx="4.4" ry="2.6"/><ellipse cx="6" cy="0" rx="4.4" ry="2.6"/></g></svg></div><p class="kick" data-i="vnH"></p><h2 class="sp">Dewan Tengku Zara</h2>
+<section class="det venue pg" id="venue"><svg viewBox="0 0 200 200" class="flw tl" aria-hidden="true"><use href="#sprig"/></svg><svg viewBox="0 0 200 200" class="flw br" aria-hidden="true"><use href="#sprig"/></svg><div class="orn" aria-hidden="true"><svg width="150" height="22" viewBox="0 0 150 22" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 11H58M92 11H150" opacity=".6"/><g transform="translate(75 11)"><circle r="2.2" fill="currentColor" stroke="none"/><ellipse cx="0" cy="-6" rx="2.6" ry="4.4"/><ellipse cx="0" cy="6" rx="2.6" ry="4.4"/><ellipse cx="-6" cy="0" rx="4.4" ry="2.6"/><ellipse cx="6" cy="0" rx="4.4" ry="2.6"/></g></svg></div><p class="kick" data-i="vnH"></p><h2 class="sp">Dewan Tengku Zara</h2>
 <div class="card vcard"><div class="vtxt"><div class="ico"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-10.5a6.5 6.5 0 0 1 13 0C18.5 15.4 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.3"/></svg></div><p data-i="vnP"></p><div class="links"><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Dewan%20Tengku%20Zara%2C%20Jalan%2015%2F23%2C%20Seksyen%2015%2C%20Shah%20Alam" target="_blank" rel="noopener">Google Maps</a><a class="btn ghost" href="https://waze.com/ul?q=Dewan%20Tengku%20Zara%20Seksyen%2015%20Shah%20Alam&amp;navigate=yes" target="_blank" rel="noopener">Waze</a><button class="btn ghost" id="copyAddr" type="button" data-i="copyA"></button></div></div>
 <div class="map"><iframe title="Peta Dewan Tengku Zara" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Dewan%20Tengku%20Zara%2C%20Jalan%2015%2F23%2C%20Seksyen%2015%2C%2040200%20Shah%20Alam&amp;z=16&amp;output=embed"></iframe><button type="button" id="mapShield"><span data-i="mapTap"></span></button></div></div>
 </section>
 
-<section class="rsvp" id="rsvp"><div class="rbg" id="rbg"></div><div class="rin pg">
+<section class="rsvp" id="rsvp"><div class="rbg" id="rbg"><svg viewBox="0 0 200 200" class="flw tr" aria-hidden="true"><use href="#sprig"/></svg><svg viewBox="0 0 200 200" class="flw mid" aria-hidden="true"><use href="#sprig"/></svg><svg viewBox="0 0 200 200" class="flw br" aria-hidden="true"><use href="#sprig"/></svg></div><div class="rin pg">
 <div class="rhead"><p class="kick" data-i="rsvpK"></p><h2 class="sp" data-i="rsvpT"></h2><p class="lead" data-i="rsvpP"></p></div>
 <div class="card"><form id="f" novalidate>
 <p class="note" id="demoNote" data-i="demo" hidden></p>
@@ -349,7 +368,7 @@ html.typing{scroll-snap-type:none}
 <div class="wall pg" id="ucapan"><p class="kick" data-i="wK"></p><h2 class="sp" data-i="wT"></h2><div class="wishes" id="wishes"></div></div>
 </section>
 
-<section class="contact pg" id="contact"><i class="flo l" aria-hidden="true"></i><i class="flo r" aria-hidden="true"></i><i class="flo bq" aria-hidden="true"></i><div class="orn" aria-hidden="true"><svg width="150" height="22" viewBox="0 0 150 22" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 11H58M92 11H150" opacity=".6"/><g transform="translate(75 11)"><circle r="2.2" fill="currentColor" stroke="none"/><ellipse cx="0" cy="-6" rx="2.6" ry="4.4"/><ellipse cx="0" cy="6" rx="2.6" ry="4.4"/><ellipse cx="-6" cy="0" rx="4.4" ry="2.6"/><ellipse cx="6" cy="0" rx="4.4" ry="2.6"/></g></svg></div><p class="kick" data-i="ctK"></p><h2 class="sp" data-i="ctT"></h2>
+<section class="contact pg" id="contact"><svg viewBox="0 0 200 200" class="flw tl" aria-hidden="true"><use href="#sprig"/></svg><svg viewBox="0 0 200 200" class="flw tr" aria-hidden="true"><use href="#sprig"/></svg><div class="orn" aria-hidden="true"><svg width="150" height="22" viewBox="0 0 150 22" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 11H58M92 11H150" opacity=".6"/><g transform="translate(75 11)"><circle r="2.2" fill="currentColor" stroke="none"/><ellipse cx="0" cy="-6" rx="2.6" ry="4.4"/><ellipse cx="0" cy="6" rx="2.6" ry="4.4"/><ellipse cx="-6" cy="0" rx="4.4" ry="2.6"/><ellipse cx="6" cy="0" rx="4.4" ry="2.6"/></g></svg></div><p class="kick" data-i="ctK"></p><h2 class="sp" data-i="ctT"></h2>
 <div class="ctg" id="ctg"></div>
 <footer><div class="orn" aria-hidden="true"><svg width="150" height="22" viewBox="0 0 150 22" fill="none" stroke="currentColor" stroke-width="1"><path d="M0 11H58M92 11H150" opacity=".6"/><g transform="translate(75 11)"><circle r="2.2" fill="currentColor" stroke="none"/><ellipse cx="0" cy="-6" rx="2.6" ry="4.4"/><ellipse cx="0" cy="6" rx="2.6" ry="4.4"/><ellipse cx="-6" cy="0" rx="4.4" ry="2.6"/><ellipse cx="6" cy="0" rx="4.4" ry="2.6"/></g></svg></div><div class="fdoa">Barakallahu lakuma wa baraka alaikuma.</div><p class="fn">Alieya &amp; Farhan</p><p class="ftag">THE SAME PROMISE · A NEW CHAPTER</p><p data-i="thx"></p></footer></section>
 </main>
@@ -404,7 +423,8 @@ const RV=[[".intro .mono","spin"],[".intro .kick","up"],[".intro .quote","up",.1
 [".pg>.orn","scale"],[".det .kick","up"],["#details .card:nth-child(1)","rotL",.2],["#details .card:nth-child(2)","rotR",.35],[".vcard","up",.25],
 [".rhead .kick","up",.25],[".rhead .lead","up",.4],[".rin>.card","up",.5],[".wall .kick","up"],["#wishes","up",.3],
 [".contact .kick","up"],[".ct:nth-child(1)","rotL",.15],[".ct:nth-child(2)","up",.25],[".ct:nth-child(3)","rotR",.35],["footer","up",.45]];
-if(M){RV.forEach(([q,fx,d])=>document.querySelectorAll(q).forEach(e=>{e.classList.add("rv","r-"+fx);if(d)e.style.setProperty("--dl",d+"s")}));
+{const sp=$("sprig").innerHTML;document.querySelectorAll(".flw").forEach(f=>f.innerHTML=sp)}
+if(M){document.documentElement.classList.add("js-draw");RV.forEach(([q,fx,d])=>document.querySelectorAll(q).forEach(e=>{e.classList.add("rv","r-"+fx);if(d)e.style.setProperty("--dl",d+"s")}));
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{rootMargin:"0px 0px -30% 0px"});
 document.querySelectorAll(".pg").forEach(p=>io.observe(p))}
 else document.querySelectorAll("h2.sp").forEach(h=>h.classList.add("static"));
