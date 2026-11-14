@@ -11,7 +11,7 @@
 
 const SHEET = 'RSVP';
 const SUMMARY = 'Ringkasan';
-const MAX_PAX = 6;
+const MAX_PAX = 3;
 const HEADERS = ['Masa', 'Nama', 'No. Telefon', 'Kehadiran', 'Bilangan', 'Ucapan', 'Pautan jemputan', 'Kali dikemas kini'];
 
 /** Jalankan sekali: sediakan tab RSVP + Ringkasan. */
