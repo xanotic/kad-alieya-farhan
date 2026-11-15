@@ -311,7 +311,7 @@ html.lock .names,html.lock .to{animation-play-state:paused}
 .wel .flw{z-index:0;--pt:#e2c27c;color:#e2c27c;opacity:.55;width:clamp(110px,34vw,220px)}
 .js-draw .wel .flw .fs{transition:stroke-dashoffset 2.6s cubic-bezier(.4,.1,.2,1) .2s;stroke-dashoffset:0}
 .js-draw .wel .flw .fp,.js-draw .wel .flw .fc{opacity:1}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero{height:auto}.pin{display:block;height:auto;min-height:100svh;padding:90px 0}.cover,.reveal,.invA{grid-area:auto;opacity:1;margin:0 auto 40px}.rbg{clip-path:none}.wel .bf{display:none}.snapA{display:none}.hero{scroll-snap-align:start}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero{height:auto}.pin{position:relative;display:block;height:auto;overflow:visible}.photo{inset:0 0 auto 0;height:100svh;opacity:1!important;filter:none!important;transform:none!important}.cover,.reveal,.invA{grid-area:auto;opacity:1!important;translate:none!important;scale:none!important;min-height:100svh;box-sizing:border-box;margin:0 auto;scroll-snap-align:start;scroll-snap-stop:always}.invA,.reveal{display:flex;flex-direction:column;justify-content:center;padding-top:70px;padding-bottom:30px}.rbg{clip-path:none}.wel .bf{display:none}.snapA{display:none}}
 </style>
 <noscript><style>.wel{display:none}html.lock,html.lock body{overflow:auto;height:auto}</style></noscript>
 </head>
@@ -486,7 +486,8 @@ picEl.style.transformOrigin=ZO.ox+"px "+ZO.oy+"px";fitCover(H-782*sc*k)}
 /* shrink the cover text until it ends above the floral arch, whatever the screen size */
 function fitCover(archTop){let cs=1;covEl.style.setProperty("--cs",cs);
 while(cs>.6&&covEl.offsetTop+covEl.offsetHeight>archTop-14){cs-=.03;covEl.style.setProperty("--cs",cs.toFixed(2))}}
-if(document.fonts)document.fonts.ready.then(()=>{if(M)zoomGeo()});
+if(document.fonts)document.fonts.ready.then(()=>zoomGeo());
+if(!M){zoomGeo();addEventListener("resize",zoomGeo)}
 function split(){SP.length=0;document.querySelectorAll("h2.sp").forEach(h=>{const ws=h.textContent.trim().split(/\s+/);h.textContent="";
 const sp=ws.map((w,i)=>{const o=document.createElement("span"),n=document.createElement("span");o.className="w";n.textContent=w;n.style.setProperty("--i",i);o.appendChild(n);h.appendChild(o);if(i<ws.length-1)h.appendChild(h.classList.contains("brk")&&/,$/.test(w)?document.createElement("br"):document.createTextNode(" "));return n});SP.push({h,sp,top:0})})}
 const SNAP=[...document.querySelectorAll(".snapA")];
@@ -644,7 +645,7 @@ let wy0=null;wel.addEventListener("touchstart",e=>{wy0=e.touches[0].clientY},{pa
 wel.addEventListener("touchend",e=>{if(wy0!=null&&wy0-e.changedTouches[0].clientY>50)openWel();wy0=null},{passive:true});
 addEventListener("keydown",e=>{if(!welOpen&&!wel.hidden&&(e.key==="Enter"||e.key===" ")&&document.activeElement===document.body){e.preventDefault();openWel()}});
 /* page dots: one per resting point */
-const PTS=[...document.querySelectorAll(".snapA,.pg")],dotsEl=$("dots");
+const PTS=M?[...document.querySelectorAll(".snapA,.pg")]:[covEl,invEl,revEl,...document.querySelectorAll(".pg")],dotsEl=$("dots");
 dotsEl.innerHTML=PTS.map((_,i)=>`<button type="button" aria-label="${i+1}/${PTS.length}"></button>`).join("");
 const DB=[...dotsEl.children],ptTop=e=>e.getBoundingClientRect().top+scrollY;
 DB.forEach((b,i)=>b.onclick=()=>scrollTo({top:ptTop(PTS[i]),behavior:M?"smooth":"auto"}));
